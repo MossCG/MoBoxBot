@@ -1,0 +1,29 @@
+# 构建产物
+out/
+target/
+build/
+*.class
+/*.jar
+
+# 本地参考资料（NapCat、Java-WebSocket 等，不进仓库）
+_ref/
+
+# 运行目录（只忽略仓库根目录下的那个，别误伤 Java 包目录）
+/MoBoxBot/
+logs/
+*.log
+
+# SQLite 运行文件
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# 系统文件
+Thumbs.db
+.DS_Store
