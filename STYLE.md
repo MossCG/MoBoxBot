@@ -6,7 +6,7 @@
 
 ## 0. 三条底线
 
-1. 技术栈锁定：Java 8 + MossLib + fastjson + Java-WebSocket 1.6.0 + SQLite，不引入 Spring、Lombok、PF4J、MyBatis。
+1. 技术栈锁定：Java 8 + MoBoxLib + fastjson + Java-WebSocket 1.6.0 + SQLite，不引入 Spring、Lombok、PF4J、MyBatis。
 2. 风格跟着同类文件走，动手前先读一个同类文件，照抄它的结构、注释密度与命名。
 3. 中文注释、中文日志、中文配置说明，不用 emoji。
 
@@ -249,7 +249,7 @@ public class ExamplePlugin extends Plugin {
 - 直接访问 `BasicInfo`。
 - 直接访问 `Database`、`OneBot` 内部类。
 - 使用 `getResourceAsStream` 读插件资源。
-- 打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。
+- 打包 MoBoxLib、fastjson、sqlite-jdbc、Java-WebSocket。
 
 ### 3.6 配置写回
 
@@ -320,7 +320,7 @@ MoBoxBot 暂不做 Web 管理。M9 如果启动 Web 控制台，再引入 `mobox
 
 ## 6. 交付前自检
 
-1. `javac -encoding UTF-8 -cp "depend/MossLib.jar;depend/Java-WebSocket-1.6.0.jar" -d <临时目录> <全部 java>` 编译通过。
+1. `javac -encoding UTF-8 -cp "depend/MoBoxLib.jar;depend/Java-WebSocket-1.6.0.jar" -d <临时目录> <全部 java>` 编译通过。
 2. `build.ps1` 能产出 `out/MoBoxBot.jar`。
 3. 插件加载、启用、停用、重载、异常隔离全部跑过。
 4. 配置写回幂等，注释与顺序未丢。

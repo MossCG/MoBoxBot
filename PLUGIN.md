@@ -112,7 +112,7 @@ public class ExamplePlugin extends Plugin {
 
 注意：
 
-1. 插件 JAR 不要打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。
+1. 插件 JAR 不要打包 MoBoxLib、fastjson、sqlite-jdbc、Java-WebSocket。
 2. 插件读自己的资源用 `readResource` / `readResourceText`，不要用 `getResourceAsStream`。
 3. 插件线程、连接、定时任务必须在 `onDisable` 中释放。
 4. 生产环境更新插件建议重启进程，热重载只保证主程序不重启。
@@ -379,7 +379,7 @@ javac -encoding UTF-8 -cp "MoBoxBot/out/MoBoxBot.jar" -d classes <你的java>
 
 1. JAR 根目录必须有 `plugin.json`。
 2. 主类必须继承 `API.Plugin`。
-3. 插件 JAR 里不要有 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。
+3. 插件 JAR 里不要有 MoBoxLib、fastjson、sqlite-jdbc、Java-WebSocket。
 4. 把 JAR 放进 `./MoBoxBot/plugins/`，重启或开发模式重载。
 5. 故意写错一个依赖或让构造函数抛异常，确认只有该插件失败。
 6. 停用后确认监听器、命令、任务都回收。

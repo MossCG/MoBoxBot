@@ -3,7 +3,7 @@
 ## 前置约束（每次动手前必读）
 
 - 先读 [STYLE.md](STYLE.md)、[PLUGIN.md](PLUGIN.md)、[PLAN.md](PLAN.md)。
-- 技术栈锁定：Java 8 + MossLib + fastjson + Java-WebSocket 1.6.0 + SQLite。
+- 技术栈锁定：Java 8 + MoBoxLib + fastjson + Java-WebSocket 1.6.0 + SQLite。
 - 保持一致比“更现代”更重要。新增功能先找 MoBoxPanel / MoBoxBot 同类文件照抄结构与注释密度。
 - 中文注释、中文日志、中文配置说明；不用 emoji。
 - 当前项目不做 Web 管理；M9 再评估，届时另读 `mobox-ui-style`。

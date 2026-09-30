@@ -34,7 +34,7 @@ MoBoxBot 是一个基于 Java 的 QQ 机器人客户端。
 | Java 版本 | Java 8 |
 | 包名 | `org.moboxlab.moboxbot` |
 | 构建方式 | `src/main/java` + `javac` + `build.ps1` + `out/` fat jar |
-| 基础库 | 复用 `MossLib.jar`，保持与 MoBoxPanel 一致 |
+| 基础库 | `MoBoxLib`（MossLib 精简版，Apache-2.0） |
 | 新增依赖 | Java-WebSocket 1.6.0 |
 | 数据存储 | SQLite |
 | Web 管理 | 暂不做，最后作为可选项 |
@@ -73,7 +73,7 @@ MoBoxBot 是一个基于 Java 的 QQ 机器人客户端。
 
 1. 保持一致比“更现代”更重要。
 2. 中文注释、中文日志、中文配置说明；不用 emoji。
-3. 后端只使用 JDK 8 + MossLib + fastjson + 必要的 WebSocket 库；不引入第二套 JSON、日志、配置框架。
+3. 后端只使用 JDK 8 + MoBoxLib + fastjson + 必要的 WebSocket 库；不引入第二套 JSON、日志、配置框架。
 
 ### 4.2 包结构
 
@@ -148,7 +148,7 @@ BasicInfo.sendDebug("收到群消息："+groupID);
 - 插件只允许依赖 `org.moboxlab.moboxbot.API`。
 - 插件禁止直接调用 `BasicInfo`、`Database`、`OneBot` 内部类。
 - 插件要读自己的 JAR 资源，统一用 `readResource` / `readResourceText`，不要用会命中父加载器的 `getResourceAsStream`。
-- 插件 JAR 不要打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。
+- 插件 JAR 不要打包 MoBoxLib、fastjson、sqlite-jdbc、Java-WebSocket。
 - 插件注册的一切资源由主程序按插件记账，停用和重载时统一回收。
 
 ### 4.7 版本与构建
@@ -220,7 +220,7 @@ MoBoxBot/
 │  ├─ Java-WebSocket-1.6.0/
 │  └─ Java-WebSocket-1.5.7/
 ├─ depend/
-│  ├─ MossLib.jar
+│  ├─ MoBoxLib.jar
 │  └─ Java-WebSocket-1.6.0.jar
 ├─ src/
 │  ├─ main/
@@ -606,7 +606,7 @@ public class PingCommand extends BotCommand {
 
 派生规则：
 
-1. 插件 JAR 不要打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。
+1. 插件 JAR 不要打包 MoBoxLib、fastjson、sqlite-jdbc、Java-WebSocket。
 2. 插件读自己的资源用 `readResource` / `readResourceText`。
 3. 插件线程、连接、定时任务必须在 `onDisable` 中释放。
 4. 生产环境更新插件建议重启进程，热重载只保证主程序不重启。
@@ -630,7 +630,7 @@ public class PingCommand extends BotCommand {
 
 ### 9.1 控制台命令
 
-控制台命令继续使用 MossLib 的 `ObjectCommand` 与 `CommandManager`，与 MoBoxPanel 一致。
+控制台命令继续使用 MoBoxLib 的 `ObjectCommand` 与 `CommandManager`，与 MoBoxPanel 的使用习惯一致。
 
 首版命令：
 
@@ -854,9 +854,9 @@ PRAGMA user_version = 1;
 - 插件名先转小写，非 `a-z0-9` 字符替换为下划线，避免表名冲突。
 - `bot_plugin_data` 用于小数据；结构化数据仍由插件建自己的表。
 
-### 10.4 MossLib 复用结论
+### 10.4 MoBoxLib 精简结论
 
-MoBoxPanel 的 `MossLib-APIDOC.md` 已确认 MossLib 是 fat jar，内置 SQLite、MySQL、fastjson、snakeyaml、log4j、oshi 和 slf4j-api。
+MoBoxLib 从 MossLib 精简而来，采用 Apache-2.0，移除了 MySQL、JavaMail、OSHI、JNA 和有缺陷的 `SQLiteExecute`。
 
 直接复用：
 
@@ -890,8 +890,8 @@ MoBoxPanel 的 `MossLib-APIDOC.md` 已确认 MossLib 是 fat jar，内置 SQLite
 Java-WebSocket 固定 `1.6.0`：
 
 - `1.6.0` 的 `sourceCompatibility` 是 Java 8。
-- 它只使用 slf4j 的基础日志方法，可以被 MossLib 内置的 slf4j-api 1.7.36 满足。
-- 打包时只引入 Java-WebSocket 本体，不引入它声明的 slf4j-api 2.x，避免和 MossLib 冲突。
+- 它只使用 slf4j 的基础日志方法，可以由 MoBoxLib 内置的 slf4j-api 1.7.36 满足。
+- 打包时只引入 Java-WebSocket 本体，不引入它声明的 slf4j-api 2.x，避免和 MoBoxLib 冲突。
 - 如果 M0 空跑出现 slf4j binding 警告，再评估是否加入 `slf4j-nop 1.7.36`，不预先引入。
 - `1.5.7` 仅作为对比参考留在 `_ref`，不作为最终依赖。
 
@@ -899,7 +899,7 @@ Java-WebSocket 固定 `1.6.0`：
 
 ### 11.1 日志
 
-- 使用 MossLib `ObjectLogger`，与 MoBoxPanel 一致。
+- 使用 MoBoxLib `ObjectLogger`，与 MoBoxPanel 的使用习惯一致。
 - 控制台输出启动流程、连接状态、插件状态、错误原因。
 - 文件日志放 `./MoBoxBot/logs/`。
 - 日志包含：时间、级别、插件名、群号、用户号、事件类型。
@@ -1027,12 +1027,12 @@ Java-WebSocket 固定 `1.6.0`：
 | QQ 风控 | 账号限制或封禁 | 频率限制、随机延迟、避免批量操作、使用小号 |
 | 插件类加载泄漏 | 内存持续增长 | 默认不热重载、资源释放规范、重载检查 |
 | 插件依赖冲突 | 启动失败或行为异常 | API 父加载、插件依赖隔离、加载期校验 |
-| MossLib 兼容性 | 与 MoBoxPanel 行为不一致 | M0 先验证日志、配置、命令、SQLite 四项能力 |
+| MoBoxLib 兼容性 | 与 MoBoxPanel 行为不一致 | 已用冒烟测试验证日志、配置、命令、SQLite 四项能力 |
 | Java-WebSocket 依赖 | 打包或运行缺类 | 固定版本放进 `depend/`，构建后做一次空跑 |
 | SQLite 写锁 | 并发写失败 | 串行 `SqlExecutor`，事务短小 |
 | 非幂等重试 | 重复发消息 | 只重试幂等接口，发送接口带请求标识 |
 | 插件安全 | 恶意插件执行任意代码 | 只加载可信插件，首版不提供沙箱 |
-| 许可证不兼容 | 发布和商用风险 | M0 阶段确认 MossLib、Java-WebSocket 许可证 |
+| 许可证不兼容 | 发布和商用风险 | MoBoxBot 与 MoBoxLib 采用 Apache-2.0，Java-WebSocket 采用 MIT |
 
 ## 15. 验收标准
 
@@ -1064,7 +1064,7 @@ Java-WebSocket 固定 `1.6.0`：
 | Java 版本 | Java 8 |
 | 包名 | `org.moboxlab.moboxbot` |
 | 构建方式 | `build.ps1` + `javac` + `out/` fat jar |
-| 基础库 | 复用 `MossLib.jar` |
+| 基础库 | `MoBoxLib`（MossLib 精简版，Apache-2.0） |
 | WebSocket 库 | Java-WebSocket |
 | 数据存储 | SQLite |
 | Web 管理 | 暂不做，M9 再评估 |
@@ -1093,7 +1093,7 @@ M0 仍需实测：
 
 | 验证项 | 目标 |
 |---|---|
-| MossLib 空跑 | 用 Java 8 编译并启动，验证日志、配置、命令、SQLite 四项 |
+| MoBoxLib 冒烟 | 已用 Java 8 编译并启动，验证日志、配置、SQLite |
 | NapCat 正向 WS | 按 `websocketServers` 配置实际连接一次 |
 | SQLite 建表释放 | 确认首次运行、升级、旧库补列行为 |
 
@@ -1137,6 +1137,7 @@ M1-M7 已完成：
 | MoBoxPanel 计划与插件规范 | `D:\CodeX\Projects\MoBoxPanel\PLUGIN.md` | Spigot 式插件 API 的直接参考 |
 | MoBoxPanel 代码风格 | `D:\CodeX\Projects\MoBoxPanel\STYLE.md` | Java 8 与项目调用习惯 |
 | MossLib 能力与踩坑 | `D:\CodeX\Projects\MoBoxPanel\MossLib-APIDOC.md` | MossLib 复用结论 |
+| MoBoxLib 源码 | `D:\CodeX\Projects\MoBoxLib` | Apache-2.0 精简基础库 |
 | NapCat 源码 | `_ref/NapCatQQ` | 协议端实现参考 |
 | NapCat 文档源 | `_ref/NapCatDocs` | OneBot 网络、事件、消息段、API 文档 |
 | NapCat 文档站 | `_ref/napneko.github.io` | 构建后的静态站点 |
