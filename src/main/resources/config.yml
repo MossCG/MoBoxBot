@@ -1,0 +1,51 @@
+#MoBoxBot 配置文件
+#首次运行会释放到 ./MoBoxBot/config.yml，已存在时不覆盖
+
+#基础设置
+enable: false
+botName: "MoBoxBot"
+botOwner: "123456789"
+author: "MossCG"
+debug: false
+
+#命令
+commandPrefix: "/"
+commandCooldownSecond: 3
+commandHelpEnable: true
+
+#OneBot 连接（默认正向 WebSocket）
+oneBotMode: "forward-ws"
+oneBotUrl: "ws://127.0.0.1:3001"
+oneBotToken: ""
+oneBotMessagePostFormat: "array"
+oneBotReportSelfMessage: false
+oneBotHeartInterval: 30000
+oneBotReconnectInterval: 5000
+oneBotActionTimeout: 10000
+
+#反向 WebSocket（oneBotMode=reverse-ws 时使用）
+oneBotHost: "127.0.0.1"
+oneBotPort: 3001
+oneBotPath: "/onebot"
+
+#数据库
+databaseType: "sqlite"
+sqlitePath: "./MoBoxBot/data/bot.db"
+sqlitePoolSize: 2
+
+#插件
+pluginDir: "./MoBoxBot/plugins"
+pluginAutoEnable: true
+pluginHotReload: false
+pluginDevMode: false
+
+#日志
+logDir: "./MoBoxBot/logs"
+logLevel: "INFO"
+logKeepDays: 30
+
+#行为
+enableMessageLog: false
+messageLogKeepDays: 7
+commandLogKeepDays: 30
+groupDefaultEnable: true
