@@ -1,6 +1,6 @@
 # MoBoxBot 计划书
 
-> 状态：确认版 v0.4
+> 状态：M0 完成版 v0.5
 > 日期：2026-09-30
 > 范围：只定义方案、边界、模块、里程碑与验收标准，不包含实现代码。
 
@@ -1074,7 +1074,7 @@ Java-WebSocket 固定 `1.6.0`：
 | 版本规则 | 沿用 MoBoxPanel |
 | 代码风格 | 参考 MoBoxPanel + `my-code-style` |
 
-M0 已完成：
+M0 交付物：
 
 | 项目 | 结果 |
 |---|---|
@@ -1082,6 +1082,12 @@ M0 已完成：
 | NapCat 文档 | 已拉取 `_ref/NapCatDocs` 与 `_ref/napneko.github.io` |
 | NapCat 源码 | 已拉取 `_ref/NapCatQQ` |
 | Java-WebSocket 版本 | 固定 `1.6.0` |
+| 协作与风格 | `AGENTS.md`、`STYLE.md`、`update.md` |
+| 插件规范 | `PLUGIN.md` |
+| 插件 API | `API.md` |
+| OneBot 覆盖 | `ONEBOT.md` |
+| 配置草案 | `src/main/resources/config.yml` |
+| SQLite 结构 | `src/main/resources/struct-sqlite.sql` |
 
 M0 仍需实测：
 
@@ -1093,12 +1099,14 @@ M0 仍需实测：
 
 ## 17. 下一步
 
-1. 按 NapCat 文档整理 OneBot 11 覆盖清单与事件字段表。
-2. 整理 MoBoxBot 自己的 `STYLE.md`。
-3. 整理 MoBoxBot 自己的 `PLUGIN.md`。
-4. 输出 `API` 包接口草案。
-5. 输出 `config.yml` 与 `struct-sqlite.sql` 草案。
-6. 再进入 M1 工程骨架实现。
+进入 M1 工程骨架：
+
+1. 建 `build.ps1`、`run.bat` 与可选 `pom.xml`。
+2. 建 `Main`、`BasicInfo`、目录释放与日志初始化。
+3. 复制 `MossLib.jar` 与 `Java-WebSocket-1.6.0.jar` 到 `depend/`。
+4. 建控制台命令框架与 `status`、`exit`。
+5. 建 `config.yml` 读取与 `reloadConfig()`。
+6. 产出第一个 `V0.0.1.0.xxxx` 版本提交，并追加 `update.md`。
 
 ## 18. 参考资料
 
