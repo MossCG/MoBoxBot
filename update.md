@@ -23,3 +23,4 @@
 | 版本号 | 日期 | 级别 | 更新内容 |
 |---|---|---|---|
 | M0 | 2026-09-30 | 文档阶段 | 初始化 MoBoxBot 仓库、计划书、协作规范、代码风格、插件规范、插件 API 草案、OneBot 11 覆盖清单、`config.yml` 与 `struct-sqlite.sql` 草案；确定 Java 8、MossLib、Java-WebSocket 1.6.0、正向 WebSocket、SQLite、`org.moboxlab.moboxbot`、Spigot 式插件内核 |
+| V0.1.0.0.2030 | 2026-09-30 | 小版本 | **M1-M7 核心实现**：`MoBoxLib` 精简基础库（Apache-2.0，移除 MySQL/JavaMail/OSHI/JNA，修复取连接 sleep 200ms、YAML 读取、目录创建和配置空值问题）；MoBoxBot 主程序骨架、Java 8 构建脚本、控制台命令、SQLite `DatabaseMain`/`SqlExecutor`/建表初始化；OneBot 11 正向/反向 WebSocket、Token 鉴权、心跳检测、重连、echo Action 调用、群聊/私聊/通知/请求/元事件解析；Spigot 式插件内核（`plugin.json`、依赖排序、独立类加载器、生命周期、资源记账回收、`@EventHandler` 事件总线、聊天命令、权限与冷却、插件数据存储）；示例插件 `MoBoxBot-ExamplePlugin` 与轻量测试入口 |

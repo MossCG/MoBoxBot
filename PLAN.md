@@ -1,6 +1,6 @@
 # MoBoxBot 计划书
 
-> 状态：M0 完成版 v0.5
+> 状态：M1-M7 完成版 v0.6
 > 日期：2026-09-30
 > 范围：只定义方案、边界、模块、里程碑与验收标准，不包含实现代码。
 
@@ -1097,16 +1097,38 @@ M0 仍需实测：
 | NapCat 正向 WS | 按 `websocketServers` 配置实际连接一次 |
 | SQLite 建表释放 | 确认首次运行、升级、旧库补列行为 |
 
+M1-M7 已完成：
+
+| 阶段 | 交付 |
+|---|---|
+| M1 | Java 8 工程骨架、`build.ps1`、`run.bat`、`Main`、`BasicInfo`、日志、配置、控制台命令 |
+| M2 | `DatabaseMain`、`SqlExecutor`、`TableInitializer`、`struct-sqlite.sql` 建表 |
+| M3 | OneBot 正向 WebSocket、反向 WebSocket、Token、心跳、重连 |
+| M4 | 事件模型、消息工具、Action 调用、echo 响应 |
+| M5 | `plugin.json`、依赖排序、独立类加载器、生命周期、插件记录 |
+| M6 | `EventBus`、`@EventHandler`、聊天命令、权限、冷却 |
+| M7 | `MoBoxBot-ExamplePlugin`、控制台插件管理、轻量测试入口 |
+
+本轮真实验证：
+
+1. `build.ps1` 编译 51 个 Java 文件并产出 `out/MoBoxBot.jar`。
+2. `enable: false` 启动能正确读取配置并退出。
+3. `enable: true` 启动能完成 SQLite 建表、插件内核和 OneBot 连接初始化。
+4. NapCat 未启动时，正向 WebSocket 能记录连接拒绝并自动重连。
+5. 示例插件能加载、启用、注册 2 个事件监听器和 `ping` 命令。
+6. `TestMain` 能派发 `GroupMessageEvent` 并触发示例插件监听器。
+7. `TestMain` 能通过 `CommandRegistry` 执行 `/ping` 并得到 `pong`。
+
 ## 17. 下一步
 
-进入 M1 工程骨架：
+进入 M8 测试与部署：
 
-1. 建 `build.ps1`、`run.bat` 与可选 `pom.xml`。
-2. 建 `Main`、`BasicInfo`、目录释放与日志初始化。
-3. 复制 `MossLib.jar` 与 `Java-WebSocket-1.6.0.jar` 到 `depend/`。
-4. 建控制台命令框架与 `status`、`exit`。
-5. 建 `config.yml` 读取与 `reloadConfig()`。
-6. 产出第一个 `V0.0.1.0.xxxx` 版本提交，并追加 `update.md`。
+1. 搭 Mock OneBot WebSocket Server，自动化验证事件、Action 和重连。
+2. 用真实 NapCatQQ 跑正向 WS 与反向 WS 的端到端测试。
+3. 补群消息、私聊消息、图片、@、回复、撤回、戳一戳的实测记录。
+4. 补插件失败隔离测试：缺依赖、循环依赖、构造函数异常、停用回收、重载。
+5. 补 Linux `build.sh` 或 Maven/Gradle 可选构建，评估是否加入 CI。
+6. 写 `DEPLOY.md`，覆盖 Windows、Linux、NapCat 配置和升级步骤。
 
 ## 18. 参考资料
 
