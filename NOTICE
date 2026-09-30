@@ -1,0 +1,33 @@
+MoBoxBot
+Copyright 2026 MoBoxLab
+
+This product is licensed under the Apache License, Version 2.0.
+
+This product includes the following third-party software:
+
+MoBoxLib
+Copyright 2026 MoBoxLab
+Licensed under the Apache License, Version 2.0.
+MoBoxLib is a reduced fork of MossLib. MySQL, JavaMail, OSHI, JNA, and the
+original broken SQLiteExecute implementation have been removed.
+
+Java-WebSocket 1.6.0
+Copyright the Java-WebSocket contributors
+Licensed under the MIT License.
+
+Apache Log4j 2.20.0
+Copyright 1999-2023 The Apache Software Foundation
+Licensed under the Apache License, Version 2.0.
+
+Xerial SQLite JDBC 3.45.3.0
+Licensed under the Apache License, Version 2.0.
+
+Alibaba fastjson 1.2.83
+Copyright 1999-2017 Alibaba Group
+Licensed under the Apache License, Version 2.0.
+
+SnakeYAML 2.2
+Licensed under the Apache License, Version 2.0.
+
+MoBoxBot is an independent OneBot 11 client. It is not affiliated with,
+endorsed by, or sponsored by Tencent or NapCat.
