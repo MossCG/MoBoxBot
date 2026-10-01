@@ -10,6 +10,18 @@ MoBoxBot 是一个基于 Java 8 的 QQ 机器人客户端。
 
 MoBoxBot 只负责机器人平台、连接、事件、命令和插件加载；具体功能通过独立插件实现。
 
+**重要：MoBoxBot 是高度模块化的项目。**
+
+主程序只内置必要的连接、事件、权限、闭麦和控制台能力。`/ping`、`/plugins`、`/status`、`/welcome`、`/poll`、`/random`、`/remind`、`/poke` 等功能都由独立插件提供。
+
+插件仓库：
+
+```text
+https://github.com/MossCG/MBB-Plugins
+```
+
+如果需要完整插件列表、插件指令和插件文档，请移步 MBB-Plugins。
+
 ## 功能
 
 - OneBot 11 正向 WebSocket、反向 WebSocket
@@ -125,28 +137,56 @@ MoBoxBot/
 └─ dependency/
 ```
 
-## 常用命令
+## 内置指令
 
-| 命令 | 权限 | 说明 |
+主程序内置闭麦指令：
+
+| 指令 | 权限 | 说明 |
 |---|---|---|
-| `/ping` | `BOT_ADMIN` | 测试是否运行中 |
-| `/plugins` | `OWNER` | 插件列表与管理 |
-| `/status` | `BOT_ADMIN` | 系统状态 |
-| `/help` | `EVERYONE` | 当前权限可用命令 |
-| `/version` | `BOT_ADMIN` | 版本信息 |
-| `/reload` | `OWNER` | 重载主程序配置 |
-| `/remind <时间> <内容>` | `BOT_ADMIN` | 定时提醒 |
-| `/random [min] [max]` | `EVERYONE` | 随机数 |
-| `/admin list/add/remove` | `OWNER` | 管理员管理 |
-| `/welcome` | `BOT_ADMIN` | 群欢迎开关 |
-| `/poll` / `/vote` | `BOT_ADMIN` / `EVERYONE` | 群投票 |
+| `/quiet` | `BOT_ADMIN` | 切换闭麦状态 |
+| `/muteself` | `BOT_ADMIN` | `/quiet` 别名 |
+| `/selfmute` | `BOT_ADMIN` | `/quiet` 别名 |
 
-命令支持：
+闭麦开启后，机器人不响应任何命令、消息、通知和戳一戳，只接受下一次管理员解除命令。
+
+命令支持 @机器人 使用：
 
 ```text
-@MoBoxBot /ping
-@MoBoxBot ping
+@MoBoxBot /quiet
+@MoBoxBot quiet
 ```
+
+其他聊天指令由插件提供，请查看：
+
+```text
+https://github.com/MossCG/MBB-Plugins
+```
+
+主程序只提供以下控制台命令：
+
+```text
+status
+plugin list
+plugin info <name>
+plugin enable <name>
+plugin disable <name>
+plugin reload <name>
+reload
+debug
+exit / stop
+```
+
+## 发布
+
+正式发布前同步更新：
+
+```text
+version.txt
+src/main/java/org/moboxlab/moboxbot/BasicInfo.java
+update.md
+```
+
+推送 `master` 后，GitHub Actions 会自动构建并发布 Release。
 
 ## 文档
 
@@ -162,7 +202,7 @@ MoBoxBot/
 
 ## 相关仓库
 
-- 插件仓库：`D:\CodeX\Projects\MBB-Plugins`
+- 插件仓库：https://github.com/MossCG/MBB-Plugins
 - 基础库：`D:\CodeX\Projects\MoBoxLib`
 
 ## 许可证

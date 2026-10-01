@@ -56,6 +56,8 @@ V0.4.0.0.0048 插件管理、Welcome、Poll、PigHub
 2. 纯文档调整使用 `docs: 中文摘要`。
 3. 插件仓库独立提交，使用插件仓库自己的版本节奏。
 4. 插件改动不影响主程序时，不改主程序 `BasicInfo.version`。
+5. 主程序发布时同步更新 `version.txt`、`BasicInfo.version` 和 `update.md`。
+6. 推送 `master` 后 GitHub Actions 自动构建并发布 Release。
 
 ## 代码风格
 

@@ -6,6 +6,9 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -23,8 +26,24 @@ jobs:
         shell: powershell
         run: .\build.ps1
 
+      - name: Read version
+        id: version
+        shell: powershell
+        run: |
+          $version = (Get-Content version.txt -Raw).Trim()
+          "tag=$version" >> $env:GITHUB_OUTPUT
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: MoBoxBot
           path: out/MoBoxBot.jar
+
+      - name: Publish release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          generate_release_notes: true
+          files: out/MoBoxBot.jar
