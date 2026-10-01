@@ -155,11 +155,12 @@ reload
 
 聊天命令默认前缀是 `/`，可以在 `config.yml` 修改。
 
-| 命令 | 权限 | 说明 |
-|---|---|---|
-| `/plugins` | `BOT_ADMIN` | 显示当前插件列表 |
-| `/ping` | `BOT_ADMIN` | 示例插件测试命令，返回 `pong` |
-| `/hello` | `BOT_ADMIN` | 示例管理员命令，返回欢迎语 |
+| 命令 | 权限 | 来源 | 说明 |
+|---|---|---|---|
+| `/ping` | `BOT_ADMIN` | `MBB-Ping` | 测试机器人是否运行中 |
+| `/plugins` | `OWNER` | `MBB-Plugins` | 显示当前插件列表 |
+| `/status` | `BOT_ADMIN` | `MBB-Status` | 显示 CPU、内存、硬盘、网络状态 |
+| `/hello` | `BOT_ADMIN` | `MoBoxBot-ExamplePlugin` | 示例管理员命令 |
 
 权限不足时不会执行命令。
 
@@ -182,6 +183,18 @@ org.moboxlab.moboxbot.API.Plugin
 - [PLUGIN.md](PLUGIN.md)
 - [API.md](API.md)
 - [ONEBOT.md](ONEBOT.md)
+
+当前常用插件工程位于：
+
+```text
+D:\CodeX\Projects\MBB-Plugins
+```
+
+包含：
+
+- `MBB-Ping`：`/ping`
+- `MBB-Plugins`：`/plugins`
+- `MBB-Status`：`/status`
 
 ## 10. 常见问题
 
