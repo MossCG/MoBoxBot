@@ -20,27 +20,39 @@ public class CommandRegistry {
 
     private static class Entry {
         private final Plugin plugin;
+        private final String ownerName;
         private final BotCommand command;
 
-        private Entry(Plugin plugin,BotCommand command) {
+        private Entry(Plugin plugin,String ownerName,BotCommand command) {
             this.plugin = plugin;
+            this.ownerName = ownerName;
             this.command = command;
         }
     }
 
     public static void register(Plugin plugin,BotCommand command) {
-        if (plugin == null || command == null) return;
+        if (plugin == null) return;
+        register(plugin.getName(),plugin,command);
+    }
+
+    public static void register(BotCommand command) {
+        register("MoBoxBot",null,command);
+    }
+
+    public static void register(String ownerName,Plugin plugin,BotCommand command) {
+        if (command == null) return;
+        String owner = ownerName == null ? "未知来源" : ownerName;
         List<String> prefixList = command.prefix();
         if (prefixList == null || prefixList.isEmpty()) return;
         for (String prefix : prefixList) {
             if (prefix == null || prefix.trim().isEmpty()) continue;
             String key = prefix.toLowerCase();
             if (commandMap.containsKey(key)) {
-                BasicInfo.logger.sendWarn("聊天命令冲突，将使用后注册的实现："+key);
+                BasicInfo.logger.sendWarn("聊天命令冲突，将使用后注册的实现："+key+"（来源："+owner+"）");
             }
-            commandMap.put(key,new Entry(plugin,command));
+            commandMap.put(key,new Entry(plugin,owner,command));
         }
-        BasicInfo.logger.sendInfo("插件 "+plugin.getName()+" 注册了聊天命令："+String.join(",",prefixList));
+        BasicInfo.logger.sendInfo(owner+" 注册了聊天命令："+String.join(",",prefixList));
     }
 
     public static int unregister(Plugin plugin) {

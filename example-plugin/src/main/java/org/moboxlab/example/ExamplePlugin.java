@@ -16,6 +16,7 @@ public class ExamplePlugin extends Plugin {
     public void onEnable() {
         getServer().getPluginManager().registerListener(this,new ExampleListener(this));
         getServer().getPluginManager().registerCommand(this,new PingCommand());
+        getServer().getPluginManager().registerCommand(this,new HelloCommand(this));
         getLogger().sendInfo("示例插件已启用！");
     }
 

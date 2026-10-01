@@ -5,6 +5,7 @@
 enable: false
 botName: "MoBoxBot"
 botOwner: "123456789"
+botAdmin: ""
 author: "MossCG"
 debug: false
 

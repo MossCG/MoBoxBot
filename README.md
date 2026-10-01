@@ -90,6 +90,8 @@ oneBotToken: "你的 Token"
 
 插件开发规范见 [PLUGIN.md](PLUGIN.md)，API 草案见 [API.md](API.md)，OneBot 覆盖见 [ONEBOT.md](ONEBOT.md)。
 
+部署、配置、命令权限和常见问题见 [USAGE.md](USAGE.md)。
+
 示例插件：
 
 ```powershell
