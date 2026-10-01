@@ -42,7 +42,7 @@
 ```json
 {
   "name": "MBB-ExamplePlugin",
-  "version": "V0.1.0.0.0201",
+  "version": "V0.1.1.0.0210",
   "apiVersion": "0.1",
   "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MoBoxLab",
