@@ -13,6 +13,7 @@ public class MessageLogUtil {
 
     public static void logIncoming(JSONObject json) {
         if (!BasicInfo.messageLog || json == null || BasicInfo.logger == null) return;
+        if (isHeartbeat(json)) return;
         String postType = json.getString("post_type");
         if ("message".equals(postType)) {
             logMessage(json);
@@ -44,6 +45,12 @@ public class MessageLogUtil {
             return;
         }
         BasicInfo.logger.sendInfo("[推送] 未知事件："+limit(json.toJSONString(),MAX_TEXT_LENGTH));
+    }
+
+    public static boolean isHeartbeat(JSONObject json) {
+        if (json == null) return false;
+        return "meta_event".equals(json.getString("post_type"))
+                && "heartbeat".equals(json.getString("meta_event_type"));
     }
 
     public static void logOutgoingAction(String action,JSONObject params,JSONObject response) {

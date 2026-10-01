@@ -33,3 +33,4 @@
 | V0.3.1.0.2345 | 2026-10-01 | 小更新 | **多 owner、浅色图片与 debug 日志**：`botOwner` 支持多个 QQ，英文逗号分隔；移除猫娘角色图，`ImageUtil` 改为更浅的金色配色；开启 `debug` 后控制台显示 OneBot WS 收到的全部原始内容，便于排查事件和 Action 响应 |
 | V0.4.0.0.0048 | 2026-10-02 | 小版本 | **插件管理、Welcome、Poll、PigHub**：`MBB-Plugins` 增加 enable/disable/reload/info，图片显示版本 By 作者、命令/监听/任务数量，禁止停用或重载自身；新增 `MBB-Welcome` 进群退群猫娘欢迎语和群级开关；新增 `MBB-Poll` 限时投票与结果 @ 发起者；新增 `MBB-PigHub` 关键词“来只猪猪”随机发送 PigHub 图片；新增 `PluginInfo` 与 `Server.getPluginInfoList()` |
 | V0.5.0.0.0201 | 2026-10-02 | 小版本 | **消息日志、API 冻结与官方示例独立**：`enableMessageLog` 开启后控制台记录群聊、私聊、通知、请求、元事件和机器人发送内容，图片显示为 `[图片]`；API 0.1 完成审计、文档冻结并加入构建期 `ApiFreezeTest`；旧 `example-plugin` 移出主仓库，改为独立 `MBB-ExamplePlugin` 官方示例仓库并在开发协作区登记 |
+| V0.5.0.1.0233 | 2026-10-02 | 小修正 | 消息日志不再显示 `meta_event.heartbeat`，避免心跳事件持续刷屏 |

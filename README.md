@@ -35,7 +35,7 @@ https://github.com/MossCG/MBB-Plugins
 - 图片渲染 API
 - SQLite 插件记录、群配置、权限和插件数据
 - 控制台调试与 WS 原始消息日志
-- `enableMessageLog` 消息日志：群消息、推送事件和机器人发送内容，图片显示为 `[图片]`
+- `enableMessageLog` 消息日志：群消息、推送事件和机器人发送内容，图片显示为 `[图片]`，heartbeat 不显示
 
 ## 环境
 
