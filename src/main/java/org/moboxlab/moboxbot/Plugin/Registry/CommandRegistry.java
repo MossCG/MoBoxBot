@@ -1,15 +1,18 @@
 package org.moboxlab.moboxbot.Plugin.Registry;
 
 import org.moboxlab.moboxbot.API.Command.BotCommand;
+import org.moboxlab.moboxbot.API.Command.CommandInfo;
 import org.moboxlab.moboxbot.API.Command.CommandPermission;
 import org.moboxlab.moboxbot.API.Command.CommandSender;
 import org.moboxlab.moboxbot.API.Plugin;
 import org.moboxlab.moboxbot.BasicInfo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 聊天命令注册表
@@ -125,6 +128,24 @@ public class CommandRegistry {
             if (entry.plugin == plugin) count++;
         }
         return count;
+    }
+
+    public static List<CommandInfo> getCommandInfoList() {
+        List<CommandInfo> result = new ArrayList<>();
+        Set<BotCommand> seen = new HashSet<>();
+        for (Entry entry : commandMap.values()) {
+            if (entry.command == null || seen.contains(entry.command)) continue;
+            seen.add(entry.command);
+            List<String> prefixList = entry.command.prefix();
+            if (prefixList == null || prefixList.isEmpty()) continue;
+            String name = prefixList.get(0);
+            List<String> aliases = new ArrayList<>();
+            for (int i = 1; i < prefixList.size(); i++) {
+                if (prefixList.get(i) != null && !prefixList.get(i).isEmpty()) aliases.add(prefixList.get(i));
+            }
+            result.add(new CommandInfo(name,aliases,entry.command.description(),entry.command.permission(),entry.ownerName));
+        }
+        return result;
     }
 
     private static boolean checkCooldown(CommandSender sender,BotCommand command) {

@@ -166,6 +166,9 @@ reload
 | `/remind <时间> <内容>` | `BOT_ADMIN` | `MBB-Remind` | 定时提醒，支持 `s/m/h/d` |
 | `/random [min] [max]` | `EVERYONE` | `MBB-Random` | 指定范围随机数 |
 | `/hello` | `BOT_ADMIN` | `MoBoxBot-ExamplePlugin` | 示例管理员命令 |
+| `/admin list` | `OWNER` | `MBB-Admin` | 查看管理员列表 |
+| `/admin add <QQ>` | `OWNER` | `MBB-Admin` | 添加管理员 |
+| `/admin remove <QQ>` | `OWNER` | `MBB-Admin` | 移除管理员 |
 
 内置闭麦指令：
 
@@ -174,6 +177,17 @@ reload
 | `/quiet` | `BOT_ADMIN` | 切换闭麦状态，别名 `/muteself`、`/selfmute` |
 
 闭麦开启后，机器人不响应任何命令、消息、通知和戳一戳；只接受下一次管理员闭麦开关命令用于解除闭麦。
+
+命令支持 @机器人 使用，例如：
+
+```text
+@MoBoxBot /ping
+@MoBoxBot ping
+```
+
+群里有多个 MoBoxBot 时，可以用这种方式指定要调用的机器人。
+
+`/help` 会读取当前已注册的全部命令，按权限分区显示，并且只显示当前发送者有权限使用的命令。
 
 权限不足时不会执行命令。
 

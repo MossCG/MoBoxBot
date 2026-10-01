@@ -12,6 +12,7 @@ import org.moboxlab.moboxbot.Plugin.CommandSenderImpl;
 import org.moboxlab.moboxbot.Plugin.PluginManagerImpl;
 import org.moboxlab.moboxbot.Plugin.Registry.CommandRegistry;
 import org.moboxlab.moboxbot.Task.SchedulerService;
+import org.moboxlab.moboxbot.Util.CommandUtil;
 import org.moboxlab.moboxbot.Util.MuteService;
 
 /**
@@ -78,7 +79,7 @@ public class OneBotEvent {
             GroupMessageEvent event = new GroupMessageEvent();
             fillMessage(event,json);
             event.setGroupID(json.getLongValue("group_id"));
-            String rawMessage = event.getRawMessage();
+            String rawMessage = CommandUtil.normalizeCommandMessage(event.getRawMessage(),json.getLongValue("self_id"));
             CommandSenderImpl sender = CommandSenderImpl.fromGroup(json);
             if (MuteService.handle(sender,rawMessage)) return;
             SchedulerService.runTaskAsync(() -> {
@@ -89,7 +90,7 @@ public class OneBotEvent {
         }
         PrivateMessageEvent event = new PrivateMessageEvent();
         fillMessage(event,json);
-        String rawMessage = event.getRawMessage();
+        String rawMessage = CommandUtil.normalizeCommandMessage(event.getRawMessage(),json.getLongValue("self_id"));
         CommandSenderImpl sender = CommandSenderImpl.fromPrivate(json);
         if (MuteService.handle(sender,rawMessage)) return;
         SchedulerService.runTaskAsync(() -> {

@@ -5,10 +5,12 @@ import org.moboxlab.moboxbot.Command.CommandExit;
 import org.moboxlab.moboxbot.Command.CommandPlugin;
 import org.moboxlab.moboxbot.Command.CommandReload;
 import org.moboxlab.moboxbot.Command.CommandStatus;
+import org.moboxlab.moboxbot.Command.MuteCommand;
 import org.moboxlab.moboxbot.Database.DatabaseMain;
 import org.moboxlab.moboxbot.Database.TableInitializer;
 import org.moboxlab.moboxbot.OneBot.OneBotMain;
 import org.moboxlab.moboxbot.Plugin.PluginManagerImpl;
+import org.moboxlab.moboxbot.Plugin.Registry.CommandRegistry;
 import org.moboxlab.moboxbot.Task.SchedulerService;
 import org.moboxlab.moboxlib.Command.CommandManager;
 import org.moboxlab.moboxlib.Config.ConfigManager;
@@ -65,6 +67,9 @@ public class Main {
 
         //插件加载（必须在 OneBot 连接前）
         PluginManagerImpl.init();
+
+        //内置聊天命令（仅登记元数据，实际闭麦拦截在 OneBotEvent）
+        CommandRegistry.register(new MuteCommand());
 
         //OneBot 连接
         OneBotMain.init();

@@ -2,6 +2,7 @@ package org.moboxlab.moboxbot.Plugin;
 
 import com.alibaba.fastjson.JSONObject;
 import org.moboxlab.moboxbot.API.Command.BotCommand;
+import org.moboxlab.moboxbot.API.Command.CommandInfo;
 import org.moboxlab.moboxbot.API.Event.Listener;
 import org.moboxlab.moboxbot.API.MoBoxBotAPI;
 import org.moboxlab.moboxbot.API.Plugin;
@@ -296,6 +297,10 @@ public class PluginManagerImpl implements PluginManager {
         PluginRecord record = recordMap.get(name);
         if (record == null || record.plugin == null) return 0;
         return eventBus.count(record.plugin);
+    }
+
+    public List<CommandInfo> getCommandList() {
+        return CommandRegistry.getCommandInfoList();
     }
 
     private void recycle(PluginRecord record) {

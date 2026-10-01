@@ -27,6 +27,7 @@ org.moboxlab.moboxbot.API
 ├─ PluginLogger.java
 ├─ Command/
 │  ├─ BotCommand.java
+│  ├─ CommandInfo.java
 │  ├─ CommandSender.java
 │  └─ CommandPermission.java
 ├─ Event/
@@ -115,6 +116,14 @@ public interface Server {
     StorageService getStorage();
 
     void reloadConfig();
+
+    List<CommandInfo> getCommandList();
+
+    List<Long> getAdminList();
+
+    boolean addAdmin(long userID);
+
+    boolean removeAdmin(long userID);
 }
 ```
 

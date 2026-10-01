@@ -32,6 +32,11 @@ public class MuteService {
             return true;
         }
 
+        toggle(sender);
+        return true;
+    }
+
+    public static void toggle(CommandSender sender) {
         muted = !muted;
         if (muted) {
             sender.sendMessage("已闭麦，只响应下一次解除命令！");
@@ -40,7 +45,6 @@ public class MuteService {
             sender.sendMessage("已解除闭麦！");
             BasicInfo.logger.sendInfo("已解除闭麦模式！");
         }
-        return true;
     }
 
     private static boolean isMuteCommand(String command) {
