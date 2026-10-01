@@ -22,6 +22,7 @@ org.moboxlab.moboxbot.API
 ├─ Server.java
 ├─ Plugin.java
 ├─ PluginDescription.java
+├─ PluginInfo.java
 ├─ PluginState.java
 ├─ PluginManager.java
 ├─ PluginLogger.java
@@ -124,6 +125,8 @@ public interface Server {
     boolean addAdmin(long userID);
 
     boolean removeAdmin(long userID);
+
+    List<PluginInfo> getPluginInfoList();
 }
 ```
 

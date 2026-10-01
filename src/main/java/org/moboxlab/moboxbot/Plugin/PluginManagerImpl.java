@@ -9,6 +9,7 @@ import org.moboxlab.moboxbot.API.Plugin;
 import org.moboxlab.moboxbot.API.PluginDescription;
 import org.moboxlab.moboxbot.API.PluginLogger;
 import org.moboxlab.moboxbot.API.PluginManager;
+import org.moboxlab.moboxbot.API.PluginInfo;
 import org.moboxlab.moboxbot.API.PluginState;
 import org.moboxlab.moboxbot.API.Storage.StorageService;
 import org.moboxlab.moboxbot.BasicInfo;
@@ -301,6 +302,23 @@ public class PluginManagerImpl implements PluginManager {
 
     public List<CommandInfo> getCommandList() {
         return CommandRegistry.getCommandInfoList();
+    }
+
+    public List<PluginInfo> getPluginInfoList() {
+        List<PluginInfo> list = new ArrayList<>();
+        for (PluginRecord record : recordMap.values()) {
+            PluginInfo info = new PluginInfo();
+            info.name = record.getName();
+            info.version = record.description == null ? "" : record.description.version;
+            info.author = record.description == null ? "" : record.description.author;
+            info.description = record.description == null ? "" : record.description.description;
+            info.enabled = record.state == PluginState.ENABLED;
+            info.listenerCount = record.plugin == null ? 0 : eventBus.count(record.plugin);
+            info.commandCount = record.commands.size();
+            info.taskCount = record.tasks.size();
+            list.add(info);
+        }
+        return list;
     }
 
     private void recycle(PluginRecord record) {

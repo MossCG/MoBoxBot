@@ -158,7 +158,9 @@ reload
 | 命令 | 权限 | 来源 | 说明 |
 |---|---|---|---|
 | `/ping` | `BOT_ADMIN` | `MBB-Ping` | 测试机器人是否运行中 |
-| `/plugins` | `OWNER` | `MBB-Plugins` | 显示当前插件列表 |
+| `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
+| `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
+| `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |
 | `/status` | `BOT_ADMIN` | `MBB-Status` | 显示 CPU、内存、硬盘、网络状态 |
 | `/help` | `EVERYONE` | `MBB-Help` | 命令帮助图片 |
 | `/version` | `BOT_ADMIN` | `MBB-Version` | 版本信息图片 |
@@ -169,6 +171,10 @@ reload
 | `/admin list` | `OWNER` | `MBB-Admin` | 查看管理员列表 |
 | `/admin add <QQ>` | `OWNER` | `MBB-Admin` | 添加管理员 |
 | `/admin remove <QQ>` | `OWNER` | `MBB-Admin` | 移除管理员 |
+| `/welcome` | `BOT_ADMIN` | `MBB-Welcome` | 切换当前群进群退群消息 |
+| `/poll <时长> <问题> [选项...]` | `BOT_ADMIN` | `MBB-Poll` | 发起限时投票 |
+| `/vote <序号>` | `EVERYONE` | `MBB-Poll` | 参与当前群投票 |
+| `来只猪猪` | `EVERYONE` | `MBB-PigHub` | 关键词触发随机猪猪图片 |
 
 内置闭麦指令：
 

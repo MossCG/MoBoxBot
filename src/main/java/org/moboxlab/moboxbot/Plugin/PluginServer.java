@@ -5,6 +5,7 @@ import org.moboxlab.moboxbot.API.Command.CommandInfo;
 import org.moboxlab.moboxbot.API.MoBoxBotAPI;
 import org.moboxlab.moboxbot.API.OneBot.OneBotClient;
 import org.moboxlab.moboxbot.API.PluginManager;
+import org.moboxlab.moboxbot.API.PluginInfo;
 import org.moboxlab.moboxbot.API.Server;
 import org.moboxlab.moboxbot.API.Storage.StorageService;
 import org.moboxlab.moboxbot.BasicInfo;
@@ -76,5 +77,10 @@ public class PluginServer implements Server {
     @Override
     public boolean removeAdmin(long userID) {
         return AdminService.removeAdmin(userID);
+    }
+
+    @Override
+    public List<PluginInfo> getPluginInfoList() {
+        return PluginManagerImpl.get().getPluginInfoList();
     }
 }

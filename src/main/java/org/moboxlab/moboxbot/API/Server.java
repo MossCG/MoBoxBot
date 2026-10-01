@@ -41,4 +41,6 @@ public interface Server {
     boolean addAdmin(long userID);
 
     boolean removeAdmin(long userID);
+
+    List<PluginInfo> getPluginInfoList();
 }
