@@ -161,7 +161,7 @@ reload
 | `/plugins` | `OWNER` | `MBB-Plugins` | 显示当前插件列表 |
 | `/status` | `BOT_ADMIN` | `MBB-Status` | 显示 CPU、内存、硬盘、网络状态 |
 | `/help` | `EVERYONE` | `MBB-Help` | 命令帮助图片 |
-| `/version` | `EVERYONE` | `MBB-Version` | 版本信息图片 |
+| `/version` | `BOT_ADMIN` | `MBB-Version` | 版本信息图片 |
 | `/reload` | `OWNER` | `MBB-Reload` | 重载主程序配置 |
 | `/remind <时间> <内容>` | `BOT_ADMIN` | `MBB-Remind` | 定时提醒，支持 `s/m/h/d` |
 | `/random [min] [max]` | `EVERYONE` | `MBB-Random` | 指定范围随机数 |
