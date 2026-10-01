@@ -160,13 +160,15 @@ public class CommandRegistry {
     }
 
     private static boolean isOwner(long userID) {
-        String owner = BasicInfo.getConfigString("botOwner","");
-        if (owner == null || owner.trim().isEmpty()) return false;
-        try {
-            return Long.parseLong(owner.trim()) == userID;
-        } catch (Exception e) {
-            return false;
+        String owners = BasicInfo.getConfigString("botOwner","");
+        if (owners == null || owners.trim().isEmpty()) return false;
+        for (String owner : owners.split(",")) {
+            try {
+                if (Long.parseLong(owner.trim()) == userID) return true;
+            } catch (Exception ignored) {
+            }
         }
+        return false;
     }
 
     private static boolean isBotAdmin(long userID) {

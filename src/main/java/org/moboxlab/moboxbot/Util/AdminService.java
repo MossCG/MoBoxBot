@@ -43,7 +43,20 @@ public class AdminService {
 
     public static boolean isAdmin(long userID) {
         if (userID <= 0) return false;
+        if (isOwner(userID)) return true;
         return getAdminList().contains(userID);
+    }
+
+    private static boolean isOwner(long userID) {
+        String owners = BasicInfo.getConfigString("botOwner","");
+        if (owners == null || owners.trim().isEmpty()) return false;
+        for (String owner : owners.split(",")) {
+            try {
+                if (Long.parseLong(owner.trim()) == userID) return true;
+            } catch (Exception ignored) {
+            }
+        }
+        return false;
     }
 
     private static boolean writeAdmins(Set<Long> admins) {

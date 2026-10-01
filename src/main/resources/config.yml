@@ -4,7 +4,7 @@
 #基础设置
 enable: false                         #是否启用 MoBoxBot，首次配置完成后改为 true
 botName: "MoBoxBot"                   #机器人显示名称
-botOwner: "123456789"                 #机器人所有者 QQ 号
+botOwner: "123456789"                 #机器人所有者 QQ 号，多个账号用英文逗号分隔，例如 "123456,234567"
 botAdmin: ""                          #机器人管理员 QQ 号，多个账号用英文逗号分隔，例如 "123456,234567"
 author: "MossCG"                      #作者信息
 debug: false                          #是否输出调试日志

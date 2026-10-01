@@ -71,7 +71,7 @@ example-plugin\out\MoBoxBot-ExamplePlugin.jar
 ```yaml
 enable: true
 botName: "MoBoxBot"
-botOwner: "你的QQ号"
+botOwner: "所有者QQ号1,所有者QQ号2"
 botAdmin: "管理员QQ号1,管理员QQ号2"
 
 oneBotMode: "forward-ws"
@@ -86,7 +86,7 @@ pluginDir: "./MoBoxBot/plugins"
 
 | 配置 | 含义 |
 |---|---|
-| `botOwner` | 机器人所有者，拥有最高权限 |
+| `botOwner` | 机器人所有者，支持多个 QQ，必须用英文逗号分隔，例如 `"123456,234567"` |
 | `botAdmin` | 机器人管理员，多个 QQ 必须用英文逗号分隔，例如 `"123456,234567"` |
 
 修改配置后，可以在控制台执行：
@@ -148,7 +148,7 @@ reload
 | `plugin disable <name>` | 停用插件 |
 | `plugin reload <name>` | 重载插件，开发模式使用 |
 | `reload` | 重载配置 |
-| `debug` | 切换调试模式 |
+| `debug` | 切换调试模式，开启后控制台显示 WS 收到的原始内容 |
 | `exit` / `stop` | 退出 MoBoxBot |
 
 ## 8. 聊天命令

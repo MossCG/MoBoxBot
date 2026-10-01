@@ -167,6 +167,7 @@ public class OneBotMain {
 
         @Override
         public void onMessage(String message) {
+            BasicInfo.sendDebug("[OneBot] 收到 WS 消息："+message);
             try {
                 OneBotEvent.handle(JSONObject.parseObject(message));
             } catch (Exception e) {
@@ -220,6 +221,7 @@ public class OneBotMain {
 
         @Override
         public void onMessage(WebSocket conn,String message) {
+            BasicInfo.sendDebug("[OneBot] 收到 WS 消息："+message);
             try {
                 OneBotEvent.handle(JSONObject.parseObject(message));
             } catch (Exception e) {
