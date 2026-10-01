@@ -56,6 +56,7 @@ public class Main {
             System.exit(0);
         }
         BasicInfo.debug = BasicInfo.getConfigBoolean("debug",false);
+        BasicInfo.messageLog = BasicInfo.getConfigBoolean("enableMessageLog",false);
 
         //数据库初始化
         logger.sendInfo("正在初始化数据库模块......");
@@ -95,6 +96,7 @@ public class Main {
         BasicInfo.logger.sendInfo("正在重载配置文件......");
         BasicInfo.config = ConfigManager.getConfigObject(BasicInfo.runDir,"config.yml","config.yml");
         BasicInfo.debug = BasicInfo.getConfigBoolean("debug",false);
+        BasicInfo.messageLog = BasicInfo.getConfigBoolean("enableMessageLog",false);
         BasicInfo.logger.sendInfo("重载完成！");
     }
 

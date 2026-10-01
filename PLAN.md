@@ -242,8 +242,8 @@ MoBoxBot/
 │  └─ bot.db
 ├─ logs/
 ├─ plugins/
-│  ├─ MoBoxBot-ExamplePlugin.jar
-│  └─ MoBoxBot-ExamplePlugin/
+│  ├─ MBB-ExamplePlugin.jar
+│  └─ MBB-ExamplePlugin/
 │     └─ config.yml
 └─ dependency/
 ```
@@ -442,10 +442,10 @@ OneBotClient.setGroupBan(groupID,userID,duration);
 
 ```json
 {
-  "name": "MoBoxBot-ExamplePlugin",
+  "name": "MBB-ExamplePlugin",
   "version": "V0.0.1.0.1930",
   "apiVersion": "0.1",
-  "main": "org.moboxlab.example.ExamplePlugin",
+  "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MossCG",
   "description": "MoBoxBot 示例插件",
   "website": "",
@@ -1107,7 +1107,7 @@ M1-M7 已完成：
 | M4 | 事件模型、消息工具、Action 调用、echo 响应 |
 | M5 | `plugin.json`、依赖排序、独立类加载器、生命周期、插件记录 |
 | M6 | `EventBus`、`@EventHandler`、聊天命令、权限、冷却 |
-| M7 | `MoBoxBot-ExamplePlugin`、控制台插件管理、轻量测试入口 |
+| M7 | `MBB-ExamplePlugin`、控制台插件管理、轻量测试入口 |
 
 本轮真实验证：
 

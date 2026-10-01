@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * 主程序服务门面
  * 插件从 getServer() 拿这一切，不要直接访问 BasicInfo。
+ * API 0.1 冻结后，本接口只允许非破坏性追加方法。
  */
 public interface Server {
     String getVersion();

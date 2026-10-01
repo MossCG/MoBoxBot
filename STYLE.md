@@ -331,7 +331,7 @@ MoBoxBot 暂不做 Web 管理。M9 如果启动 Web 控制台，再引入 `mobox
 
 - [PLAN.md](PLAN.md)：项目计划与决策。
 - [PLUGIN.md](PLUGIN.md)：插件开发规范。
-- [API.md](API.md)：插件 API 草案。
+- [API.md](API.md)：插件 API 0.1 冻结文档。
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单。
 - `D:\CodeX\Projects\MoBoxPanel\STYLE.md`：同源项目风格依据。
 - `D:\CodeX\Projects\MoBoxPanel\PLUGIN.md`：插件内核实现参考。

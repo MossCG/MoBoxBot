@@ -9,10 +9,12 @@ $dependDir = Join-Path $root "depend"
 $moBoxLib = Join-Path $dependDir "MoBoxLib.jar"
 $javaWebSocket = Join-Path $dependDir "Java-WebSocket-1.6.0.jar"
 $srcJava = Join-Path $root "src\main\java"
+$testJava = Join-Path $root "src\test\java"
 $srcResources = Join-Path $root "src\main\resources"
 $outDir = Join-Path $root "out"
 $buildDir = Join-Path $outDir "build"
 $classesDir = Join-Path $buildDir "classes"
+$testClassesDir = Join-Path $buildDir "test-classes"
 $jarPath = Join-Path $outDir "MoBoxBot.jar"
 
 Write-Host "==== MoBoxBot 构建 ===="
@@ -46,6 +48,29 @@ $classpath = $moBoxLib + ";" + $javaWebSocket
 if ($LASTEXITCODE -ne 0) {
     Write-Host "编译失败，已中止。"
     exit 1
+}
+
+$testFiles = Get-ChildItem -LiteralPath $testJava -Recurse -File -Filter *.java -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+if ($testFiles -and $testFiles.Count -gt 0) {
+    New-Item -ItemType Directory -Force -Path $testClassesDir | Out-Null
+    $testClasspath = $classesDir + ";" + $classpath
+    Write-Host ("编译测试：" + $testFiles.Count + " 个文件")
+    & javac -encoding UTF-8 -cp $testClasspath -d $testClassesDir $testFiles
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "测试编译失败，已中止。"
+        exit 1
+    }
+    $runClasspath = $testClassesDir + ";" + $testClasspath
+    & java "-Dfile.encoding=UTF-8" -cp $runClasspath org.moboxlab.moboxbot.ApiFreezeTest
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "API 冻结检查失败，已中止。"
+        exit 1
+    }
+    & java "-Dfile.encoding=UTF-8" -cp $runClasspath org.moboxlab.moboxbot.MessageLogFormatTest
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "消息日志格式检查失败，已中止。"
+        exit 1
+    }
 }
 
 Copy-Item -Path (Join-Path $srcResources "*") -Destination $classesDir -Recurse -Force

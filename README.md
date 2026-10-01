@@ -35,6 +35,7 @@ https://github.com/MossCG/MBB-Plugins
 - 图片渲染 API
 - SQLite 插件记录、群配置、权限和插件数据
 - 控制台调试与 WS 原始消息日志
+- `enableMessageLog` 消息日志：群消息、推送事件和机器人发送内容，图片显示为 `[图片]`
 
 ## 环境
 
@@ -120,7 +121,6 @@ MoBoxBot/
 ├─ src/main/java/org/moboxlab/moboxbot/
 ├─ src/main/resources/
 ├─ depend/
-├─ example-plugin/
 ├─ build.ps1
 ├─ run.bat
 └─ .github/workflows/
@@ -193,17 +193,22 @@ update.md
 - [USAGE.md](USAGE.md)：使用、配置、命令和常见问题
 - [DEPLOY.md](DEPLOY.md)：Windows、Linux 和 NapCat 部署
 - [PLUGIN.md](PLUGIN.md)：插件开发规范
-- [API.md](API.md)：插件 API 草案
+- [API.md](API.md)：插件 API 0.1 冻结文档
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单
 - [STYLE.md](STYLE.md)：代码风格
 - [CONTRIBUTING.md](CONTRIBUTING.md)：参与开发
 - [SECURITY.md](SECURITY.md)：安全与凭据策略
 - [update.md](update.md)：版本更新日志
 
-## 相关仓库
+## 开发协作
 
-- 插件仓库：https://github.com/MossCG/MBB-Plugins
-- 基础库：`D:\CodeX\Projects\MoBoxLib`
+| 仓库 | 用途 |
+|---|---|
+| [MBB-ExamplePlugin](https://github.com/MossCG/MBB-ExamplePlugin) | 官方插件开发示例，覆盖 API 0.1 的主要调用方式 |
+| [MBB-Plugins](https://github.com/MossCG/MBB-Plugins) | MoBoxBot 常用插件集合 |
+| [MoBoxLib](https://github.com/MossCG/MoBoxLib) | MoBoxBot 与 MBB-* 插件共用的 Java 8 基础库 |
+
+开发新插件时，优先从 `MBB-ExamplePlugin` 复制结构。
 
 ## 许可证
 

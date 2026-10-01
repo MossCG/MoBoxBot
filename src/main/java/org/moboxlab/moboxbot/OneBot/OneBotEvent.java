@@ -13,6 +13,7 @@ import org.moboxlab.moboxbot.Plugin.PluginManagerImpl;
 import org.moboxlab.moboxbot.Plugin.Registry.CommandRegistry;
 import org.moboxlab.moboxbot.Task.SchedulerService;
 import org.moboxlab.moboxbot.Util.CommandUtil;
+import org.moboxlab.moboxbot.Util.MessageLogUtil;
 import org.moboxlab.moboxbot.Util.MuteService;
 
 /**
@@ -25,6 +26,7 @@ public class OneBotEvent {
             OneBotEcho.complete(json);
             return;
         }
+        MessageLogUtil.logIncoming(json);
         String postType = json.getString("post_type");
         if ("message".equals(postType)) {
             handleMessage(json);

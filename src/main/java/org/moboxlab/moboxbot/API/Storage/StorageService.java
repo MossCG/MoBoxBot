@@ -5,6 +5,10 @@ import org.moboxlab.moboxbot.API.Plugin;
 
 import java.util.List;
 
+/**
+ * 插件存储服务
+ * 键值数据按插件隔离，结构化 SQL 只允许访问 plugin_ 前缀表。
+ */
 public interface StorageService {
     String get(Plugin plugin,String key);
 

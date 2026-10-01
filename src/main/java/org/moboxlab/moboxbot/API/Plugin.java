@@ -70,8 +70,7 @@ public abstract class Plugin {
         String path = dataFolder+"/config.yml";
         if (config == null) config = new PluginConfig(path);
         if (new File(path).exists()) {
-            config.load();
-            return true;
+            return config.load();
         }
         try {
             new File(dataFolder).mkdirs();
@@ -99,10 +98,13 @@ public abstract class Plugin {
             if (entry == null) return null;
             InputStream input = jar.getInputStream(entry);
             ByteArrayOutputStream output = new ByteArrayOutputStream();
-            byte[] buffer = new byte[2048];
-            int read;
-            while ((read = input.read(buffer)) > 0) output.write(buffer,0,read);
-            input.close();
+            try {
+                byte[] buffer = new byte[2048];
+                int read;
+                while ((read = input.read(buffer)) > 0) output.write(buffer,0,read);
+            } finally {
+                input.close();
+            }
             return output.toByteArray();
         } catch (Exception e) {
             if (logger != null) logger.sendWarn("读取插件资源失败："+entryName+"，原因："+e.getMessage());

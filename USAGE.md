@@ -45,19 +45,6 @@ Windows：
 out\MoBoxBot.jar
 ```
 
-示例插件：
-
-```powershell
-cd example-plugin
-.\build.ps1
-```
-
-产物：
-
-```text
-example-plugin\out\MoBoxBot-ExamplePlugin.jar
-```
-
 ## 4. 配置
 
 首次运行会释放：
@@ -80,6 +67,7 @@ oneBotToken: "与NapCat一致的Token"
 
 sqlitePath: "./MoBoxBot/data/bot.db"
 pluginDir: "./MoBoxBot/plugins"
+enableMessageLog: false
 ```
 
 权限说明：
@@ -96,6 +84,19 @@ reload
 ```
 
 监听端口、数据库连接等配置需要重启进程。
+
+`enableMessageLog` 开启后，控制台会输出：
+
+- 群聊和私聊消息
+- 通知、请求和元事件
+- 机器人成功发送的群聊和私聊内容
+
+图片统一显示为 `[图片]`。例如：
+
+```text
+[消息] 群 测试群(123456) 用户 测试用户(234567)：/ping
+[发送] 群 123456：[图片]
+```
 
 ## 5. NapCat 配置
 
@@ -167,7 +168,6 @@ reload
 | `/reload` | `OWNER` | `MBB-Reload` | 重载主程序配置 |
 | `/remind <时间> <内容>` | `BOT_ADMIN` | `MBB-Remind` | 定时提醒，支持 `s/m/h/d` |
 | `/random [min] [max]` | `EVERYONE` | `MBB-Random` | 指定范围随机数 |
-| `/hello` | `BOT_ADMIN` | `MoBoxBot-ExamplePlugin` | 示例管理员命令 |
 | `/admin list` | `OWNER` | `MBB-Admin` | 查看管理员列表 |
 | `/admin add <QQ>` | `OWNER` | `MBB-Admin` | 添加管理员 |
 | `/admin remove <QQ>` | `OWNER` | `MBB-Admin` | 移除管理员 |
@@ -228,6 +228,12 @@ D:\CodeX\Projects\MBB-Plugins
 - `MBB-Ping`：`/ping`
 - `MBB-Plugins`：`/plugins`
 - `MBB-Status`：`/status`
+
+官方插件开发示例位于：
+
+```text
+https://github.com/MossCG/MBB-ExamplePlugin
+```
 
 ## 10. 常见问题
 

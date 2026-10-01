@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * OneBot 客户端
+ * 所有主动调用统一走这里，调用失败时返回原始响应对象或 null。
  */
 public interface OneBotClient {
     JSONObject sendGroupMessage(long groupID,JSONArray message);

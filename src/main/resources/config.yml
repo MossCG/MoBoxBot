@@ -46,7 +46,7 @@ logLevel: "INFO"                      #日志等级
 logKeepDays: 30                       #日志保留天数
 
 #行为
-enableMessageLog: false               #是否记录消息日志
+enableMessageLog: false               #是否在控制台记录群消息、推送事件和机器人发送内容，图片显示为[图片]
 messageLogKeepDays: 7                 #消息日志保留天数
 commandLogKeepDays: 30                #命令日志保留天数
 groupDefaultEnable: true              #新群默认是否启用

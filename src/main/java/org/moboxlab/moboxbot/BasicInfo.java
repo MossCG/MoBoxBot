@@ -6,7 +6,7 @@ import org.moboxlab.moboxlib.Object.ObjectConfig;
 import org.moboxlab.moboxlib.Object.ObjectLogger;
 
 public class BasicInfo {
-    public static String version = "V0.4.0.0.0048";
+    public static String version = "V0.5.0.0.0201";
     public static String author = "MossCG";
     public static final String runDir = "./MoBoxBot";
 
@@ -17,6 +17,7 @@ public class BasicInfo {
 
     public static long startTime = 0L;
     public static boolean debug = false;
+    public static boolean messageLog = false;
 
     public static void sendDebug(String message) {
         if (logger == null) return;

@@ -1,7 +1,8 @@
 # PLUGIN.md — MoBoxBot 插件开发规范
 
 > 适用：MoBoxBot 主程序插件。
-> 插件 API 版本：**0.1（M0 草案）**。
+> 插件 API 版本：**0.1（已冻结）**。
+> 官方示例：https://github.com/MossCG/MBB-ExamplePlugin
 > 参考：MoBoxPanel 的 `PLUGIN.md`、`_ref/NapCatDocs`、[API.md](API.md)。
 
 ## 1. 插件是什么
@@ -10,8 +11,8 @@
 
 ```text
 ./MoBoxBot/plugins/
-├─ MoBoxBot-ExamplePlugin.jar
-└─ MoBoxBot-ExamplePlugin/
+├─ MBB-ExamplePlugin.jar
+└─ MBB-ExamplePlugin/
    └─ config.yml
 ```
 
@@ -40,13 +41,13 @@
 
 ```json
 {
-  "name": "MoBoxBot-ExamplePlugin",
-  "version": "V0.0.1.0.0000",
+  "name": "MBB-ExamplePlugin",
+  "version": "V0.1.0.0.0201",
   "apiVersion": "0.1",
-  "main": "org.moboxlab.example.ExamplePlugin",
-  "author": "MossCG",
-  "description": "MoBoxBot 示例插件",
-  "website": "",
+  "main": "org.moboxlab.mbb.example.ExamplePlugin",
+  "author": "MoBoxLab",
+  "description": "MoBoxBot 官方插件开发示例",
+  "website": "https://github.com/MossCG/MBB-ExamplePlugin",
   "depend": [],
   "softDepend": [],
   "loadBefore": [],
@@ -219,7 +220,7 @@ getServer().getPluginManager().registerListener(this,new ExampleListener(this));
 - 监听器抛异常只记日志，不影响其他监听器。
 - `MONITOR` 不要修改事件或业务数据。
 
-首版事件类草案见 [API.md](API.md)。
+事件类定义见 [API.md](API.md)。
 
 ## 7. 聊天命令
 
@@ -311,8 +312,8 @@ plugin_<插件名>_
 插件名先转小写，非 `a-z0-9` 字符替换为下划线。例如：
 
 ```text
-MoBoxBot-ExamplePlugin
-  → plugin_moboxbot_exampleplugin_
+MBB-ExamplePlugin
+  → plugin_mbb_exampleplugin_
 ```
 
 SQL 规则与主程序一致：
@@ -334,7 +335,7 @@ pluginDevMode: false
 开发模式可以：
 
 ```text
-plugin reload MoBoxBot-ExamplePlugin
+plugin reload MBB-ExamplePlugin
 ```
 
 重载流程：
@@ -353,21 +354,28 @@ onDisable()
 3. 生产环境更新插件建议重启进程。
 4. 插件注册项不能与主程序或其他插件重复。
 
-## 11. 示例插件结构
+## 11. 官方示例插件
 
 ```text
-MoBoxBot-ExamplePlugin/
+MBB-ExamplePlugin/
 ├─ build.ps1
-├─ src/main/java/org/moboxlab/example/
+├─ src/main/java/org/moboxlab/mbb/example/
 │  ├─ ExamplePlugin.java
-│  ├─ Listener/
-│  │  └─ ExampleListener.java
-│  └─ Command/
-│     └─ PingCommand.java
+│  ├─ ExampleListener.java
+│  ├─ ExampleCommand.java
+│  └─ ExampleTask.java
 └─ src/main/resources/
    ├─ plugin.json
    └─ config.yml
 ```
+
+官方示例仓库：
+
+```text
+https://github.com/MossCG/MBB-ExamplePlugin
+```
+
+示例覆盖生命周期、配置、命令、事件、文本与图片消息、存储和定时任务。
 
 编译时只依赖主程序 JAR：
 
@@ -389,13 +397,21 @@ javac -encoding UTF-8 -cp "MoBoxBot/out/MoBoxBot.jar" -d classes <你的java>
 
 | API 版本 | 说明 |
 |---|---|
-| `0.1` | M0 草案：插件基类、事件、命令、配置、OneBot 客户端、存储接口 |
+| `0.1` | 冻结版：插件基类、事件、命令、配置、OneBot 客户端、存储接口 |
 
 破坏性变更必须进位 API 次版本，并同步 [API.md](API.md) 与示例插件。
 
+兼容规则：
+
+1. 删除、重命名或改变公开方法签名属于破坏性变更。
+2. 非破坏性新增方法可以继续保留 `0.1`。
+3. 修改事件字段含义属于破坏性变更。
+4. `ApiFreezeTest` 会在构建时校验 API 形状。
+
 ## 14. 参考
 
-- [API.md](API.md)：插件 API 草案。
+- [API.md](API.md)：插件 API 0.1 冻结文档。
 - [STYLE.md](STYLE.md)：代码风格。
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单。
+- [MBB-ExamplePlugin](https://github.com/MossCG/MBB-ExamplePlugin)：官方插件开发示例。
 - `D:\CodeX\Projects\MoBoxPanel\PLUGIN.md`：Spigot 式插件内核参考。

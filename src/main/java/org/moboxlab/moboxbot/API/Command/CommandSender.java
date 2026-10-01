@@ -27,6 +27,7 @@ public interface CommandSender {
      */
     default void sendImage(String file) {
         if (file == null || file.isEmpty()) return;
+        if (MoBoxBotAPI.getServer() == null) return;
         OneBotClient client = MoBoxBotAPI.getServer().getOneBotClient();
         if (client == null) return;
         JSONArray message = MessageUtil.message(MessageUtil.image(file));

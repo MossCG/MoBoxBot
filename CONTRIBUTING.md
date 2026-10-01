@@ -8,8 +8,15 @@
 |---|---|---|
 | 主程序 | `MoBoxBot` | NapCat OneBot 客户端、插件内核、API |
 | 插件 | `MBB-Plugins` | MBB-* 独立插件 |
+| 官方示例 | `MBB-ExamplePlugin` | 官方插件开发示例 |
 
 插件仓库的改动不需要主程序更新版本号，除非同时修改了主程序 API 或核心代码。
+
+相关仓库：
+
+- https://github.com/MossCG/MBB-ExamplePlugin
+- https://github.com/MossCG/MBB-Plugins
+- https://github.com/MossCG/MoBoxLib
 
 ## 环境
 
@@ -71,6 +78,10 @@ V0.4.0.0.0048 插件管理、Welcome、Poll、PigHub
 ## 插件开发
 
 插件只允许依赖 `org.moboxlab.moboxbot.API`，具体规范见 [PLUGIN.md](PLUGIN.md)。
+
+API 0.1 已经冻结，公开接口的兼容规则见 [API.md](API.md)。
+
+新插件开发请参考官方示例仓库 `MBB-ExamplePlugin`。
 
 ## 提交前检查
 

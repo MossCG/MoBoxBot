@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * 插件管理器
  * 每个注册方法都带插件自己，主程序按插件记账并回收。
+ * API 0.1 冻结后，本接口只允许非破坏性追加方法。
  */
 public interface PluginManager {
     Plugin getPlugin(String name);

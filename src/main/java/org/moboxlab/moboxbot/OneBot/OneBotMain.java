@@ -7,6 +7,7 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.moboxlab.moboxbot.BasicInfo;
 import org.moboxlab.moboxbot.Task.SchedulerService;
+import org.moboxlab.moboxbot.Util.MessageLogUtil;
 
 import java.net.InetSocketAddress;
 import java.net.URI;
@@ -101,7 +102,9 @@ public class OneBotMain {
                 return null;
             }
             long timeout = BasicInfo.getConfigLong("oneBotActionTimeout",10000L);
-            return future.get(timeout,TimeUnit.MILLISECONDS);
+            JSONObject response = future.get(timeout,TimeUnit.MILLISECONDS);
+            MessageLogUtil.logOutgoingAction(action,params,response);
+            return response;
         } catch (Exception e) {
             BasicInfo.logger.sendWarn("OneBot Action 超时或异常："+action+"，原因："+e.getMessage());
             return null;
