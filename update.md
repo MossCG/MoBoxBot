@@ -28,3 +28,4 @@
 | V0.1.2.0.1715 | 2026-10-01 | 小更新 | **管理命令与编码修复**：示例插件 `ping` 改为 `BOT_ADMIN` 权限，新增示例管理员命令 `hello`；新增内置聊天命令 `plugins`，仅 `BOT_ADMIN` 及以上可用，显示插件名称、版本、状态、监听/命令/任务数量；MoBoxLib 控制台日志改用 UTF-8 输出，`run.bat` 增加 `chcp 65001`、工作目录切换和 `-Dfile.encoding=UTF-8`，解决 Windows 控制台乱码；新增使用文档 |
 | V0.1.3.0.1747 | 2026-10-01 | 小更新 | **配置注释与多管理员说明**：`config.yml` 每一项都补充中文注释；明确 `botAdmin` 支持多个管理员 QQ 号，必须使用英文逗号分隔；使用文档同步补充多管理员示例 |
 | V0.1.4.0.2228 | 2026-10-01 | 小更新 | **插件化命令调整**：移除主程序内置 `/plugins` 聊天命令，改由独立插件 `MBB-Plugins` 提供，权限为 `OWNER`；为 `MBB-Ping`、`MBB-Plugins`、`MBB-Status` 三个独立插件工程预留接口；使用文档同步更新插件命令来源和权限说明 |
+| V0.2.0.0.2256 | 2026-10-01 | 小版本 | **图片命令与闭麦体系**：新增 `ImageUtil` 图片渲染 API 与 `CommandSender.sendImage`；新增内置闭麦服务，`/quiet`（别名 `/muteself`、`/selfmute`）仅 `BOT_ADMIN` 可用，闭麦后不响应任何消息、命令、通知和戳一戳，只接受下一次管理员解除命令；新增独立插件 `MBB-Help`、`MBB-Version`、`MBB-Reload`、`MBB-Remind`、`MBB-Random`、`MBB-Poke`；`MBB-Plugins` 改为图片展示插件详情；`Server` 增加 `reloadConfig()`；`run.bat` 增加 headless 参数；API 与使用文档同步更新 |

@@ -51,6 +51,7 @@ if ($LASTEXITCODE -ne 0) {
 Copy-Item -Path (Join-Path $srcResources "*") -Destination $classesDir -Recurse -Force
 
 Copy-Item -Path (Join-Path $classesDir "*") -Destination $buildDir -Recurse -Force
+if (Test-Path -LiteralPath $classesDir) { Remove-Item -LiteralPath $classesDir -Recurse -Force }
 
 Push-Location $buildDir
 & jar xf $moBoxLib

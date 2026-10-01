@@ -12,6 +12,7 @@ import org.moboxlab.moboxbot.Plugin.CommandSenderImpl;
 import org.moboxlab.moboxbot.Plugin.PluginManagerImpl;
 import org.moboxlab.moboxbot.Plugin.Registry.CommandRegistry;
 import org.moboxlab.moboxbot.Task.SchedulerService;
+import org.moboxlab.moboxbot.Util.MuteService;
 
 /**
  * OneBot 事件解析与分发
@@ -29,6 +30,7 @@ public class OneBotEvent {
             return;
         }
         if ("notice".equals(postType)) {
+            if (MuteService.isMuted()) return;
             NoticeEvent event = new NoticeEvent();
             event.setNoticeType(json.getString("notice_type"));
             event.setSubType(json.getString("sub_type"));
@@ -41,6 +43,7 @@ public class OneBotEvent {
             return;
         }
         if ("request".equals(postType)) {
+            if (MuteService.isMuted()) return;
             RequestEvent event = new RequestEvent();
             event.setRequestType(json.getString("request_type"));
             event.setSubType(json.getString("sub_type"));
@@ -53,6 +56,8 @@ public class OneBotEvent {
             return;
         }
         if ("meta_event".equals(postType)) {
+            OneBotMain.markHeartbeat();
+            if (MuteService.isMuted()) return;
             MetaEvent event = new MetaEvent();
             event.setMetaEventType(json.getString("meta_event_type"));
             event.setSubType(json.getString("sub_type"));
@@ -60,10 +65,10 @@ public class OneBotEvent {
             event.setInterval(json.getLongValue("interval"));
             event.setStatus(json.getJSONObject("status"));
             event.setRaw(json);
-            OneBotMain.markHeartbeat();
             dispatch(event);
             return;
         }
+        if (MuteService.isMuted()) return;
         dispatch(new RawEvent(json));
     }
 
@@ -74,8 +79,10 @@ public class OneBotEvent {
             fillMessage(event,json);
             event.setGroupID(json.getLongValue("group_id"));
             String rawMessage = event.getRawMessage();
+            CommandSenderImpl sender = CommandSenderImpl.fromGroup(json);
+            if (MuteService.handle(sender,rawMessage)) return;
             SchedulerService.runTaskAsync(() -> {
-                CommandRegistry.dispatch(CommandSenderImpl.fromGroup(json),rawMessage);
+                CommandRegistry.dispatch(sender,rawMessage);
                 PluginManagerImpl.get().getEventBus().callEvent(event);
             });
             return;
@@ -83,8 +90,10 @@ public class OneBotEvent {
         PrivateMessageEvent event = new PrivateMessageEvent();
         fillMessage(event,json);
         String rawMessage = event.getRawMessage();
+        CommandSenderImpl sender = CommandSenderImpl.fromPrivate(json);
+        if (MuteService.handle(sender,rawMessage)) return;
         SchedulerService.runTaskAsync(() -> {
-            CommandRegistry.dispatch(CommandSenderImpl.fromPrivate(json),rawMessage);
+            CommandRegistry.dispatch(sender,rawMessage);
             PluginManagerImpl.get().getEventBus().callEvent(event);
         });
     }

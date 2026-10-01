@@ -6,7 +6,7 @@ import org.moboxlab.moboxlib.Object.ObjectConfig;
 import org.moboxlab.moboxlib.Object.ObjectLogger;
 
 public class BasicInfo {
-    public static String version = "V0.1.4.0.2228";
+    public static String version = "V0.2.0.0.2256";
     public static String author = "MossCG";
     public static final String runDir = "./MoBoxBot";
 

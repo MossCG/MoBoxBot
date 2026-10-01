@@ -48,6 +48,7 @@ org.moboxlab.moboxbot.API
 ├─ Storage/
 │  └─ StorageService.java
 └─ Util/
+   ├─ ImageUtil.java
    ├─ PluginConfig.java
    └─ Text.java
 ```
@@ -112,6 +113,8 @@ public interface Server {
     OneBotClient getOneBotClient();
 
     StorageService getStorage();
+
+    void reloadConfig();
 }
 ```
 
@@ -494,6 +497,10 @@ public interface CommandSender {
     void sendMessage(String message);
 
     void reply(String message);
+
+    default void sendImage(String file) {
+        //发送图片消息，file 支持 base64://、file:// 或 http://
+    }
 }
 ```
 
@@ -596,6 +603,29 @@ public class MessageUtil {
 
     public static JSONObject record(String file) {
         return null;
+    }
+}
+```
+
+### 8.2 ImageUtil
+
+```java
+package org.moboxlab.moboxbot.API.Util;
+
+import java.util.List;
+
+/**
+ * 插件图片渲染工具
+ */
+public class ImageUtil {
+    public static byte[] renderText(String title,List<String> lines) {
+        //把标题和文本行渲染成 PNG
+        return null;
+    }
+
+    public static String toBase64Uri(byte[] imageBytes) {
+        //转换成 OneBot 图片消息可用的 base64:// 地址
+        return "";
     }
 }
 ```

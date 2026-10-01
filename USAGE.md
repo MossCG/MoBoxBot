@@ -160,7 +160,20 @@ reload
 | `/ping` | `BOT_ADMIN` | `MBB-Ping` | 测试机器人是否运行中 |
 | `/plugins` | `OWNER` | `MBB-Plugins` | 显示当前插件列表 |
 | `/status` | `BOT_ADMIN` | `MBB-Status` | 显示 CPU、内存、硬盘、网络状态 |
+| `/help` | `EVERYONE` | `MBB-Help` | 命令帮助图片 |
+| `/version` | `EVERYONE` | `MBB-Version` | 版本信息图片 |
+| `/reload` | `OWNER` | `MBB-Reload` | 重载主程序配置 |
+| `/remind <时间> <内容>` | `BOT_ADMIN` | `MBB-Remind` | 定时提醒，支持 `s/m/h/d` |
+| `/random [min] [max]` | `EVERYONE` | `MBB-Random` | 指定范围随机数 |
 | `/hello` | `BOT_ADMIN` | `MoBoxBot-ExamplePlugin` | 示例管理员命令 |
+
+内置闭麦指令：
+
+| 指令 | 权限 | 说明 |
+|---|---|---|
+| `/quiet` | `BOT_ADMIN` | 切换闭麦状态，别名 `/muteself`、`/selfmute` |
+
+闭麦开启后，机器人不响应任何命令、消息、通知和戳一戳；只接受下一次管理员闭麦开关命令用于解除闭麦。
 
 权限不足时不会执行命令。
 

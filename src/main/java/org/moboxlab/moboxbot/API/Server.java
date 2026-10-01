@@ -22,4 +22,9 @@ public interface Server {
     OneBotClient getOneBotClient();
 
     StorageService getStorage();
+
+    /**
+     * 重载主程序配置。
+     */
+    void reloadConfig();
 }

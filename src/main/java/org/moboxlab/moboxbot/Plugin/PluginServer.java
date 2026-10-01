@@ -7,6 +7,7 @@ import org.moboxlab.moboxbot.API.PluginManager;
 import org.moboxlab.moboxbot.API.Server;
 import org.moboxlab.moboxbot.API.Storage.StorageService;
 import org.moboxlab.moboxbot.BasicInfo;
+import org.moboxlab.moboxbot.Main;
 
 /**
  * 主程序服务门面
@@ -46,5 +47,10 @@ public class PluginServer implements Server {
     @Override
     public StorageService getStorage() {
         return PluginManagerImpl.get().getStorage();
+    }
+
+    @Override
+    public void reloadConfig() {
+        Main.reloadConfig();
     }
 }
