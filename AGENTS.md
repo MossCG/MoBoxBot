@@ -50,6 +50,18 @@ git grep -n -I -E "oneBotToken\s*[:=]\s*[`"'][^`"']{8,}|token\s*[:=]\s*[`"'][^`"
 4. 每轮功能完成后追加 [update.md](update.md)，并同步 `BasicInfo.version`。
 5. 一轮内容较多时可以拆分提交，但同一功能不要拆成互相依赖的碎片提交。
 6. M0 属于文档阶段，不占版本号；M1 开始产生第一个 `V0...` 版本。
+7. 主程序版本只跟随 `MoBoxBot` 主仓库的代码变更。插件仓库 `D:\CodeX\Projects\MBB-Plugins` 的插件改动不要求主程序更新版本号，除非同时改动了主程序 API 或核心代码。
+
+## 仓库拆分
+
+本项目由两个独立 Git 仓库组成：
+
+| 仓库 | 路径 | 说明 |
+|---|---|---|
+| 主程序 | `D:\CodeX\Projects\MoBoxBot` | NapCat OneBot 客户端、插件内核、API、文档 |
+| 插件 | `D:\CodeX\Projects\MBB-Plugins` | MBB-* 独立插件源码与构建脚本 |
+
+插件仓库有自己的提交记录和版本节奏。插件改动只改插件仓库；主程序 API 变更才需要同步更新主程序版本。
 
 ## 目录与提交边界
 
