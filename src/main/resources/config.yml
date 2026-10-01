@@ -2,51 +2,51 @@
 #首次运行会释放到 ./MoBoxBot/config.yml，已存在时不覆盖
 
 #基础设置
-enable: false
-botName: "MoBoxBot"
-botOwner: "123456789"
-botAdmin: ""
-author: "MossCG"
-debug: false
+enable: false                         #是否启用 MoBoxBot，首次配置完成后改为 true
+botName: "MoBoxBot"                   #机器人显示名称
+botOwner: "123456789"                 #机器人所有者 QQ 号
+botAdmin: ""                          #机器人管理员 QQ 号，多个账号用英文逗号分隔，例如 "123456,234567"
+author: "MossCG"                      #作者信息
+debug: false                          #是否输出调试日志
 
 #命令
-commandPrefix: "/"
-commandCooldownSecond: 3
-commandHelpEnable: true
+commandPrefix: "/"                    #聊天命令前缀，例如 "/" 或 "!"
+commandCooldownSecond: 3              #默认命令冷却秒数
+commandHelpEnable: true               #是否启用命令帮助
 
 #OneBot 连接（默认正向 WebSocket）
-oneBotMode: "forward-ws"
-oneBotUrl: "ws://127.0.0.1:3001"
-oneBotToken: ""
-oneBotMessagePostFormat: "array"
-oneBotReportSelfMessage: false
-oneBotHeartInterval: 30000
-oneBotReconnectInterval: 5000
-oneBotActionTimeout: 10000
+oneBotMode: "forward-ws"              #连接模式，forward-ws 正向 / reverse-ws 反向
+oneBotUrl: "ws://127.0.0.1:3001"      #正向 WebSocket 地址，对应 NapCat websocketServers
+oneBotToken: ""                       #OneBot 鉴权 Token，必须与 NapCat 一致，生产环境不要留空
+oneBotMessagePostFormat: "array"      #消息上报格式，推荐 array
+oneBotReportSelfMessage: false        #是否上报机器人自身消息
+oneBotHeartInterval: 30000            #OneBot 心跳周期，单位毫秒
+oneBotReconnectInterval: 5000         #正向 WebSocket 重连间隔，单位毫秒
+oneBotActionTimeout: 10000            #Action 调用超时，单位毫秒
 
 #反向 WebSocket（oneBotMode=reverse-ws 时使用）
-oneBotHost: "127.0.0.1"
-oneBotPort: 3001
-oneBotPath: "/onebot"
+oneBotHost: "127.0.0.1"               #反向 WebSocket 监听地址
+oneBotPort: 3001                      #反向 WebSocket 监听端口
+oneBotPath: "/onebot"                 #反向 WebSocket 路径
 
 #数据库
-databaseType: "sqlite"
-sqlitePath: "./MoBoxBot/data/bot.db"
-sqlitePoolSize: 2
+databaseType: "sqlite"                #数据库类型，当前固定 sqlite
+sqlitePath: "./MoBoxBot/data/bot.db"  #SQLite 数据库文件路径
+sqlitePoolSize: 2                     #SQLite 连接池大小
 
 #插件
-pluginDir: "./MoBoxBot/plugins"
-pluginAutoEnable: true
-pluginHotReload: false
-pluginDevMode: false
+pluginDir: "./MoBoxBot/plugins"       #插件目录
+pluginAutoEnable: true                #启动时自动启用插件
+pluginHotReload: false                #是否允许插件热重载，仅开发模式建议开启
+pluginDevMode: false                  #是否开发模式
 
 #日志
-logDir: "./MoBoxBot/logs"
-logLevel: "INFO"
-logKeepDays: 30
+logDir: "./MoBoxBot/logs"             #日志目录
+logLevel: "INFO"                      #日志等级
+logKeepDays: 30                       #日志保留天数
 
 #行为
-enableMessageLog: false
-messageLogKeepDays: 7
-commandLogKeepDays: 30
-groupDefaultEnable: true
+enableMessageLog: false               #是否记录消息日志
+messageLogKeepDays: 7                 #消息日志保留天数
+commandLogKeepDays: 30                #命令日志保留天数
+groupDefaultEnable: true              #新群默认是否启用

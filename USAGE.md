@@ -72,7 +72,7 @@ example-plugin\out\MoBoxBot-ExamplePlugin.jar
 enable: true
 botName: "MoBoxBot"
 botOwner: "你的QQ号"
-botAdmin: "管理员QQ号，多个用逗号分隔"
+botAdmin: "管理员QQ号1,管理员QQ号2"
 
 oneBotMode: "forward-ws"
 oneBotUrl: "ws://127.0.0.1:3001"
@@ -87,7 +87,7 @@ pluginDir: "./MoBoxBot/plugins"
 | 配置 | 含义 |
 |---|---|
 | `botOwner` | 机器人所有者，拥有最高权限 |
-| `botAdmin` | 机器人管理员，多个 QQ 用英文逗号分隔 |
+| `botAdmin` | 机器人管理员，多个 QQ 必须用英文逗号分隔，例如 `"123456,234567"` |
 
 修改配置后，可以在控制台执行：
 
