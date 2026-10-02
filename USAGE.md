@@ -159,6 +159,10 @@ reload
 | 命令 | 权限 | 来源 | 说明 |
 |---|---|---|---|
 | `/ping` | `BOT_ADMIN` | `MBB-Ping` | 测试机器人是否运行中 |
+| `/ai status/usage/reload` | `OWNER` | `MBB-AI` | 管理公用 AI 服务 |
+| `/chat <内容>` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 与 AI 对话，每人独立上下文 |
+| `/chat new` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 清空自己的 AI 上下文 |
+| `/chat whitelist add/remove/list` | `BOT_ADMIN` | `MBB-Chat` | 管理 AI 对话白名单 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
 | `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |

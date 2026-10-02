@@ -150,6 +150,8 @@ getServer().getStorage();
 |---|---|
 | `registerListener(plugin,listener)` | 注册事件监听器 |
 | `registerCommand(plugin,command)` | 注册聊天命令 |
+| `registerService(plugin,service)` | 注册公共服务 |
+| `getService(name)` | 获取公共服务 |
 | `runTask(plugin,task)` | 异步执行一次 |
 | `runTaskLater(plugin,task,delaySeconds)` | 延迟执行 |
 | `runTaskTimer(plugin,task,delay,period)` | 周期执行 |
@@ -157,6 +159,15 @@ getServer().getStorage();
 | `getPlugins()` | 取全部插件 |
 | `isEnabled(name)` | 查询插件状态 |
 | `enablePlugin(name)` / `disablePlugin(name)` / `reloadPlugin(name)` | 插件管理 |
+
+公共服务示例：
+
+```java
+PluginService ai = getServer().getPluginManager().getService("MBB-AI");
+JSONObject result = ai.call("chat",params);
+```
+
+服务提供方实现 `PluginService` 并注册，消费方只依赖 `MBB-AI` 的公开服务名与 JSON 契约，不直接依赖服务实现类。
 
 ### 5.4 OneBot 客户端
 
