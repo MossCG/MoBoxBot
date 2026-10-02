@@ -159,10 +159,16 @@ reload
 | 命令 | 权限 | 来源 | 说明 |
 |---|---|---|---|
 | `/ping` | `BOT_ADMIN` | `MBB-Ping` | 测试机器人是否运行中 |
-| `/ai status/usage/reload` | `OWNER` | `MBB-AI` | 管理公用 AI 服务 |
+| `/ai status` | `OWNER` | `MBB-AI` | 图片查看 AI 服务状态 |
+| `/ai usage [天数]` | `OWNER` | `MBB-AI` | 图片查看 AI 请求与 Token 统计 |
+| `/ai reload` | `OWNER` | `MBB-AI` | 重载 AI 配置 |
 | `/chat <内容>` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 与 AI 对话，每人独立上下文 |
 | `/chat new` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 清空自己的 AI 上下文 |
+| `/chat persona` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 查看自己的 AI 人设 |
+| `/chat persona set/reset` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 设置或恢复自己的 AI 人设 |
 | `/chat whitelist add/remove/list` | `BOT_ADMIN` | `MBB-Chat` | 管理 AI 对话白名单 |
+| `/chatstat group [群号] [天数]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计群聊内容 |
+| `/chatstat user <QQ> [天数]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计某人在所有可见群的发言 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
 | `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |
