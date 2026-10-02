@@ -1,8 +1,8 @@
-# API.md — MoBoxBot 插件 API 0.1（冻结）
+# API.md — MoBoxBot 插件 API 0.2（冻结）
 
 > 状态：冻结
 > 冻结日期：2026-10-02
-> API 版本：`0.1`
+> API 版本：`0.2`
 > 包名：`org.moboxlab.moboxbot.API`
 > 官方示例：https://github.com/MossCG/MBB-ExamplePlugin
 
@@ -10,7 +10,7 @@
 
 插件只能依赖 `org.moboxlab.moboxbot.API`。
 
-本文件列出的类、接口、方法、字段和 JSON 数据结构属于 API 0.1 的公开契约。
+本文件列出的类、接口、方法、字段和 JSON 数据结构属于 API 0.2 的公开契约。
 
 以下变化属于破坏性变更：
 
@@ -38,6 +38,7 @@ org.moboxlab.moboxbot.API
 ├─ PluginInfo.java
 ├─ PluginManager.java
 ├─ PluginLogger.java
+├─ PluginService.java
 ├─ PluginState.java
 ├─ Command/
 │  ├─ BotCommand.java
@@ -95,7 +96,7 @@ public class ExamplePlugin extends Plugin {
 {
   "name": "MBB-ExamplePlugin",
   "version": "V0.1.1.0.0210",
-  "apiVersion": "0.1",
+  "apiVersion": "0.2",
   "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MoBoxLab",
   "description": "MoBoxBot 官方插件开发示例",
@@ -113,7 +114,7 @@ public class ExamplePlugin extends Plugin {
 
 | 成员 | 说明 |
 |---|---|
-| `API_VERSION` | 当前 API 版本，固定为 `0.1` |
+| `API_VERSION` | 当前 API 版本，固定为 `0.2` |
 | `getVersion()` | 主程序版本 |
 | `getApiVersion()` | API 版本 |
 | `getServer()` | 主程序服务门面 |
@@ -242,6 +243,8 @@ FAILED
 | `isEnabled(String)` | 查询插件是否启用 |
 | `registerListener(Plugin,Listener)` | 注册监听器 |
 | `registerCommand(Plugin,BotCommand)` | 注册聊天命令 |
+| `registerService(Plugin,PluginService)` | 注册公共服务 |
+| `getService(String)` | 按名称获取公共服务 |
 | `runTask(Plugin,Runnable)` | 异步执行一次 |
 | `runTaskLater(Plugin,Runnable,long)` | 延迟执行 |
 | `runTaskTimer(Plugin,Runnable,long,long)` | 周期执行 |
@@ -515,17 +518,17 @@ welcomeText: "你好！"
 
 主程序 `build.ps1` 会运行 `ApiFreezeTest`。
 
-该测试把全部 API 0.1 公开类、字段、构造器和方法生成签名哈希：
+该测试把全部 API 0.2 公开类、字段、构造器和方法生成签名哈希：
 
 ```text
-API_FREEZE_HASH=66ed0cd0c9f0d425f03e3460ac2328ebcd9e27c880519a87a877e9456a1d2faf
+API_FREEZE_HASH=a9762ff0943e75ed8cfccbdff68611d762057ff1c12a187330a55551286696ab
 ```
 
 如果公共 API 形状变化但哈希没有更新，构建会失败。
 
 只有以下情况可以更新哈希：
 
-1. 非破坏性新增接口，并保持 API 0.1 兼容。
+1. 非破坏性新增接口，并保持旧 API 兼容。
 2. 破坏性变更同时进位 API 次版本，并同步全部文档与示例。
 
 ## 16. 官方示例

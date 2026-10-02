@@ -5,7 +5,7 @@ package org.moboxlab.moboxbot.API;
  * 插件只认这个包，不要碰主程序内部实现。
  */
 public class MoBoxBotAPI {
-    public static final String API_VERSION = "0.1";
+    public static final String API_VERSION = "0.2";
 
     private static Server server;
 

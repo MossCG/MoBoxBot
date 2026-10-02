@@ -10,11 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * API 0.1 冻结检查
+ * API 0.2 冻结检查
  * 公共 API 形状一旦变化，本测试必须同步更新版本与文档。
  */
 public class ApiFreezeTest {
-    private static final String EXPECTED_HASH = "66ed0cd0c9f0d425f03e3460ac2328ebcd9e27c880519a87a877e9456a1d2faf";
+    private static final String EXPECTED_HASH = "a9762ff0943e75ed8cfccbdff68611d762057ff1c12a187330a55551286696ab";
     private static final String[] API_CLASS_NAMES = new String[]{
             "org.moboxlab.moboxbot.API.MoBoxBotAPI",
             "org.moboxlab.moboxbot.API.Server",
@@ -23,6 +23,7 @@ public class ApiFreezeTest {
             "org.moboxlab.moboxbot.API.PluginInfo",
             "org.moboxlab.moboxbot.API.PluginLogger",
             "org.moboxlab.moboxbot.API.PluginManager",
+            "org.moboxlab.moboxbot.API.PluginService",
             "org.moboxlab.moboxbot.API.PluginState",
             "org.moboxlab.moboxbot.API.Command.BotCommand",
             "org.moboxlab.moboxbot.API.Command.CommandInfo",
@@ -58,9 +59,9 @@ public class ApiFreezeTest {
         }
         if (!EXPECTED_HASH.equals(actualHash)) {
             System.out.println("API_FREEZE_HASH="+actualHash);
-            throw new IllegalStateException("API 0.1 冻结检查失败，请确认是否属于破坏性变更！");
+            throw new IllegalStateException("API 0.2 冻结检查失败，请确认是否属于破坏性变更！");
         }
-        System.out.println("API 0.1 冻结检查通过！");
+        System.out.println("API 0.2 冻结检查通过！");
     }
 
     private static List<String> collectSignatures() throws Exception {

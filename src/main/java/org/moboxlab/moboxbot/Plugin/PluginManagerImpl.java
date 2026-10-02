@@ -10,6 +10,7 @@ import org.moboxlab.moboxbot.API.PluginDescription;
 import org.moboxlab.moboxbot.API.PluginLogger;
 import org.moboxlab.moboxbot.API.PluginManager;
 import org.moboxlab.moboxbot.API.PluginInfo;
+import org.moboxlab.moboxbot.API.PluginService;
 import org.moboxlab.moboxbot.API.PluginState;
 import org.moboxlab.moboxbot.API.Storage.StorageService;
 import org.moboxlab.moboxbot.BasicInfo;
@@ -36,6 +37,17 @@ public class PluginManagerImpl implements PluginManager {
     private final EventBusImpl eventBus = new EventBusImpl();
     private final StorageServiceImpl storageService = new StorageServiceImpl();
     private final Map<String,PluginRecord> recordMap = new LinkedHashMap<>();
+    private final Map<String,ServiceEntry> serviceMap = new LinkedHashMap<>();
+
+    private static class ServiceEntry {
+        private final Plugin plugin;
+        private final PluginService service;
+
+        private ServiceEntry(Plugin plugin,PluginService service) {
+            this.plugin = plugin;
+            this.service = service;
+        }
+    }
 
     private PluginManagerImpl() {
     }
@@ -266,6 +278,33 @@ public class PluginManagerImpl implements PluginManager {
     }
 
     @Override
+    public boolean registerService(Plugin plugin,PluginService service) {
+        PluginRecord record = recordOf(plugin);
+        if (record == null || service == null) return false;
+        String name = service.getName();
+        if (name == null || name.trim().isEmpty()) {
+            BasicInfo.logger.sendWarn("插件 "+record.getName()+" 注册的服务名为空，已忽略！");
+            return false;
+        }
+        name = name.trim();
+        ServiceEntry exists = serviceMap.get(name);
+        if (exists != null && exists.plugin != plugin) {
+            BasicInfo.logger.sendWarn("插件服务名冲突："+name+"（已被 "+exists.plugin.getName()+" 注册）");
+            return false;
+        }
+        serviceMap.put(name,new ServiceEntry(plugin,service));
+        BasicInfo.logger.sendInfo("插件 "+record.getName()+" 注册了服务："+name);
+        return true;
+    }
+
+    @Override
+    public PluginService getService(String name) {
+        if (name == null) return null;
+        ServiceEntry entry = serviceMap.get(name.trim());
+        return entry == null ? null : entry.service;
+    }
+
+    @Override
     public void runTask(Plugin plugin,Runnable task) {
         PluginRecord record = recordOf(plugin);
         if (record == null || task == null) return;
@@ -322,6 +361,7 @@ public class PluginManagerImpl implements PluginManager {
     }
 
     private void recycle(PluginRecord record) {
+        removeServices(record.plugin);
         try {
             if (record.plugin != null) eventBus.unregisterAll(record.plugin);
         } catch (Throwable throwable) {
@@ -342,6 +382,15 @@ public class PluginManagerImpl implements PluginManager {
         record.tasks.clear();
         record.listeners.clear();
         record.commands.clear();
+    }
+
+    private void removeServices(Plugin plugin) {
+        if (plugin == null) return;
+        List<String> removeKeys = new ArrayList<>();
+        for (Map.Entry<String,ServiceEntry> entry : serviceMap.entrySet()) {
+            if (entry.getValue().plugin == plugin) removeKeys.add(entry.getKey());
+        }
+        for (String key : removeKeys) serviceMap.remove(key);
     }
 
     private PluginRecord recordOf(Plugin plugin) {

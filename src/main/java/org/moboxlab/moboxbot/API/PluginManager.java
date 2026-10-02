@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 插件管理器
  * 每个注册方法都带插件自己，主程序按插件记账并回收。
- * API 0.1 冻结后，本接口只允许非破坏性追加方法。
+ * 服务注册项在插件停用或重载时自动回收。
  */
 public interface PluginManager {
     Plugin getPlugin(String name);
@@ -20,6 +20,10 @@ public interface PluginManager {
     void registerListener(Plugin plugin,Listener listener);
 
     void registerCommand(Plugin plugin,BotCommand command);
+
+    boolean registerService(Plugin plugin,PluginService service);
+
+    PluginService getService(String name);
 
     void runTask(Plugin plugin,Runnable task);
 

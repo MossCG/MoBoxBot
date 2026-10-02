@@ -61,7 +61,7 @@ git grep -n -I -E "oneBotToken\s*[:=]\s*[`"'][^`"']{8,}|token\s*[:=]\s*[`"'][^`"
 |---|---|---|
 | 主程序 | `D:\CodeX\Projects\MoBoxBot` | NapCat OneBot 客户端、插件内核、API、文档 |
 | 插件 | `D:\CodeX\Projects\MBB-Plugins` | MBB-* 独立插件源码与构建脚本 |
-| 官方示例 | `D:\CodeX\Projects\MBB-ExamplePlugin` | API 0.1 官方插件开发示例 |
+| 官方示例 | `D:\CodeX\Projects\MBB-ExamplePlugin` | API 官方插件开发示例 |
 
 插件仓库有自己的提交记录和版本节奏。插件改动只改插件仓库；主程序 API 变更才需要同步更新主程序版本。
 
@@ -93,7 +93,7 @@ MoBoxBot/
 ## 插件 API 变更
 
 - 插件 API 版本在 `org.moboxlab.moboxbot.API.MoBoxBotAPI.API_VERSION`。
-- 当前 API 0.1 已冻结，形状变更必须同步 `ApiFreezeTest`、[API.md](API.md) 与官方示例。
+- 当前 API 0.2 已冻结，形状变更必须同步 `ApiFreezeTest`、[API.md](API.md) 与官方示例。
 - 破坏性变更必须进位 API 次版本，并同步 [PLUGIN.md](PLUGIN.md)、[API.md](API.md) 与示例插件。
 - 插件只允许依赖 `org.moboxlab.moboxbot.API`。
 - 插件 JAR 不允许打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。

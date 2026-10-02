@@ -1,7 +1,7 @@
 # PLUGIN.md — MoBoxBot 插件开发规范
 
 > 适用：MoBoxBot 主程序插件。
-> 插件 API 版本：**0.1（已冻结）**。
+> 插件 API 版本：**0.2（已冻结）**。
 > 官方示例：https://github.com/MossCG/MBB-ExamplePlugin
 > 参考：MoBoxPanel 的 `PLUGIN.md`、`_ref/NapCatDocs`、[API.md](API.md)。
 
@@ -43,7 +43,7 @@
 {
   "name": "MBB-ExamplePlugin",
   "version": "V0.1.1.0.0210",
-  "apiVersion": "0.1",
+  "apiVersion": "0.2",
   "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MoBoxLab",
   "description": "MoBoxBot 官方插件开发示例",
@@ -397,20 +397,21 @@ javac -encoding UTF-8 -cp "MoBoxBot/out/MoBoxBot.jar" -d classes <你的java>
 
 | API 版本 | 说明 |
 |---|---|
-| `0.1` | 冻结版：插件基类、事件、命令、配置、OneBot 客户端、存储接口 |
+| `0.1` | 基础版：插件基类、事件、命令、配置、OneBot 客户端、存储接口 |
+| `0.2` | 新增通用 `PluginService` 服务注册表，0.1 插件保持兼容 |
 
 破坏性变更必须进位 API 次版本，并同步 [API.md](API.md) 与示例插件。
 
 兼容规则：
 
 1. 删除、重命名或改变公开方法签名属于破坏性变更。
-2. 非破坏性新增方法可以继续保留 `0.1`。
+2. 新增公共服务能力进位 API 次版本。
 3. 修改事件字段含义属于破坏性变更。
 4. `ApiFreezeTest` 会在构建时校验 API 形状。
 
 ## 14. 参考
 
-- [API.md](API.md)：插件 API 0.1 冻结文档。
+- [API.md](API.md)：插件 API 0.2 冻结文档。
 - [STYLE.md](STYLE.md)：代码风格。
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单。
 - [MBB-ExamplePlugin](https://github.com/MossCG/MBB-ExamplePlugin)：官方插件开发示例。
