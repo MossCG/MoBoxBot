@@ -167,8 +167,8 @@ reload
 | `/chat persona` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 查看自己的 AI 人设 |
 | `/chat persona set/reset` | `BOT_ADMIN` 或白名单 | `MBB-Chat` | 设置或恢复自己的 AI 人设 |
 | `/chat whitelist add/remove/list` | `BOT_ADMIN` | `MBB-Chat` | 管理 AI 对话白名单 |
-| `/chatstat group [群号] [天数]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计群聊内容 |
-| `/chatstat user <QQ> [天数]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计某人在所有可见群的发言 |
+| `/chatstat group [群号] [天数] [ai]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计群聊内容，末尾加 `ai` 输出 AI 总结图片 |
+| `/chatstat user <QQ> [天数] [ai]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计某人在所有可见群的发言，末尾加 `ai` 输出 AI 总结图片 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
 | `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |
