@@ -143,7 +143,7 @@ public class CommandRegistry {
             for (int i = 1; i < prefixList.size(); i++) {
                 if (prefixList.get(i) != null && !prefixList.get(i).isEmpty()) aliases.add(prefixList.get(i));
             }
-            result.add(new CommandInfo(name,aliases,entry.command.description(),entry.command.permission(),entry.ownerName));
+            result.add(new CommandInfo(name,aliases,entry.command.description(),entry.command.permission(),entry.ownerName,entry.command.usage()));
         }
         return result;
     }

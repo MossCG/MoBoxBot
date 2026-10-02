@@ -1,8 +1,8 @@
-# API.md — MoBoxBot 插件 API 0.2（冻结）
+# API.md — MoBoxBot 插件 API 0.3（冻结）
 
 > 状态：冻结
 > 冻结日期：2026-10-02
-> API 版本：`0.2`
+> API 版本：`0.3`
 > 包名：`org.moboxlab.moboxbot.API`
 > 官方示例：https://github.com/MossCG/MBB-ExamplePlugin
 
@@ -10,7 +10,7 @@
 
 插件只能依赖 `org.moboxlab.moboxbot.API`。
 
-本文件列出的类、接口、方法、字段和 JSON 数据结构属于 API 0.2 的公开契约。
+本文件列出的类、接口、方法、字段和 JSON 数据结构属于 API 0.3 的公开契约。
 
 以下变化属于破坏性变更：
 
@@ -96,7 +96,7 @@ public class ExamplePlugin extends Plugin {
 {
   "name": "MBB-ExamplePlugin",
   "version": "V0.1.1.0.0210",
-  "apiVersion": "0.2",
+  "apiVersion": "0.3",
   "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MoBoxLab",
   "description": "MoBoxBot 官方插件开发示例",
@@ -114,7 +114,7 @@ public class ExamplePlugin extends Plugin {
 
 | 成员 | 说明 |
 |---|---|
-| `API_VERSION` | 当前 API 版本，固定为 `0.2` |
+| `API_VERSION` | 当前 API 版本，固定为 `0.3` |
 | `getVersion()` | 主程序版本 |
 | `getApiVersion()` | API 版本 |
 | `getServer()` | 主程序服务门面 |
@@ -365,6 +365,10 @@ public abstract class BotCommand {
         return "";
     }
 
+    public List<String> usage() {
+        return Collections.emptyList();
+    }
+
     public abstract boolean execute(CommandSender sender,String[] args);
 }
 ```
@@ -406,6 +410,7 @@ aliases
 description
 permission
 source
+usages
 ```
 
 ## 10. OneBot 客户端
@@ -518,10 +523,10 @@ welcomeText: "你好！"
 
 主程序 `build.ps1` 会运行 `ApiFreezeTest`。
 
-该测试把全部 API 0.2 公开类、字段、构造器和方法生成签名哈希：
+该测试把全部 API 0.3 公开类、字段、构造器和方法生成签名哈希：
 
 ```text
-API_FREEZE_HASH=a9762ff0943e75ed8cfccbdff68611d762057ff1c12a187330a55551286696ab
+API_FREEZE_HASH=5e10009c6a4ad44594cc14318ee4cb07cc247aacaf65da902ddb4f7201b4aa31
 ```
 
 如果公共 API 形状变化但哈希没有更新，构建会失败。

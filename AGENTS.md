@@ -93,7 +93,7 @@ MoBoxBot/
 ## 插件 API 变更
 
 - 插件 API 版本在 `org.moboxlab.moboxbot.API.MoBoxBotAPI.API_VERSION`。
-- 当前 API 0.2 已冻结，形状变更必须同步 `ApiFreezeTest`、[API.md](API.md) 与官方示例。
+- 当前 API 0.3 已冻结，形状变更必须同步 `ApiFreezeTest`、[API.md](API.md) 与官方示例。
 - 破坏性变更必须进位 API 次版本，并同步 [PLUGIN.md](PLUGIN.md)、[API.md](API.md) 与示例插件。
 - 插件只允许依赖 `org.moboxlab.moboxbot.API`。
 - 插件 JAR 不允许打包 MossLib、fastjson、sqlite-jdbc、Java-WebSocket。

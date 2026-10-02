@@ -193,7 +193,7 @@ update.md
 - [USAGE.md](USAGE.md)：使用、配置、命令和常见问题
 - [DEPLOY.md](DEPLOY.md)：Windows、Linux 和 NapCat 部署
 - [PLUGIN.md](PLUGIN.md)：插件开发规范
-- [API.md](API.md)：插件 API 0.2 冻结文档
+- [API.md](API.md)：插件 API 0.3 冻结文档
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单
 - [STYLE.md](STYLE.md)：代码风格
 - [CONTRIBUTING.md](CONTRIBUTING.md)：参与开发

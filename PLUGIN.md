@@ -1,7 +1,7 @@
 # PLUGIN.md — MoBoxBot 插件开发规范
 
 > 适用：MoBoxBot 主程序插件。
-> 插件 API 版本：**0.2（已冻结）**。
+> 插件 API 版本：**0.3（已冻结）**。
 > 官方示例：https://github.com/MossCG/MBB-ExamplePlugin
 > 参考：MoBoxPanel 的 `PLUGIN.md`、`_ref/NapCatDocs`、[API.md](API.md)。
 
@@ -43,7 +43,7 @@
 {
   "name": "MBB-ExamplePlugin",
   "version": "V0.1.1.0.0210",
-  "apiVersion": "0.2",
+  "apiVersion": "0.3",
   "main": "org.moboxlab.mbb.example.ExamplePlugin",
   "author": "MoBoxLab",
   "description": "MoBoxBot 官方插件开发示例",
@@ -149,7 +149,7 @@ getServer().getStorage();
 | 方法 | 用途 |
 |---|---|
 | `registerListener(plugin,listener)` | 注册事件监听器 |
-| `registerCommand(plugin,command)` | 注册聊天命令 |
+| `registerCommand(plugin,command)` | 注册聊天命令，可用 `usage()` 提供子命令和参数用法 |
 | `registerService(plugin,service)` | 注册公共服务 |
 | `getService(name)` | 获取公共服务 |
 | `runTask(plugin,task)` | 异步执行一次 |
@@ -410,6 +410,7 @@ javac -encoding UTF-8 -cp "MoBoxBot/out/MoBoxBot.jar" -d classes <你的java>
 |---|---|
 | `0.1` | 基础版：插件基类、事件、命令、配置、OneBot 客户端、存储接口 |
 | `0.2` | 新增通用 `PluginService` 服务注册表，0.1 插件保持兼容 |
+| `0.3` | 新增 `BotCommand.usage()` 与 `CommandInfo.usages`，帮助插件可展示子命令与参数 |
 
 破坏性变更必须进位 API 次版本，并同步 [API.md](API.md) 与示例插件。
 
@@ -422,7 +423,7 @@ javac -encoding UTF-8 -cp "MoBoxBot/out/MoBoxBot.jar" -d classes <你的java>
 
 ## 14. 参考
 
-- [API.md](API.md)：插件 API 0.2 冻结文档。
+- [API.md](API.md)：插件 API 0.3 冻结文档。
 - [STYLE.md](STYLE.md)：代码风格。
 - [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单。
 - [MBB-ExamplePlugin](https://github.com/MossCG/MBB-ExamplePlugin)：官方插件开发示例。

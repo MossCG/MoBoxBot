@@ -12,15 +12,21 @@ public class CommandInfo {
     public String description = "";
     public CommandPermission permission = CommandPermission.EVERYONE;
     public String source = "";
+    public List<String> usages = new ArrayList<>();
 
     public CommandInfo() {
     }
 
     public CommandInfo(String name,List<String> aliases,String description,CommandPermission permission,String source) {
+        this(name,aliases,description,permission,source,null);
+    }
+
+    public CommandInfo(String name,List<String> aliases,String description,CommandPermission permission,String source,List<String> usages) {
         this.name = name == null ? "" : name;
         this.aliases = aliases == null ? new ArrayList<String>() : aliases;
         this.description = description == null ? "" : description;
         this.permission = permission == null ? CommandPermission.EVERYONE : permission;
         this.source = source == null ? "" : source;
+        this.usages = usages == null ? new ArrayList<String>() : usages;
     }
 }

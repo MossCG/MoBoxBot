@@ -1,5 +1,6 @@
 package org.moboxlab.moboxbot.API.Command;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,6 +19,10 @@ public abstract class BotCommand {
 
     public String description() {
         return "";
+    }
+
+    public List<String> usage() {
+        return Collections.emptyList();
     }
 
     public abstract boolean execute(CommandSender sender,String[] args);
