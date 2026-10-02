@@ -174,6 +174,7 @@ reload
 | `/guard threshold <分数>` | `BOT_ADMIN` | `MBB-AIGuard` | 设置当前群告警阈值 |
 | `/guard test <文本>` | `BOT_ADMIN` | `MBB-AIGuard` | 测试文本风险判定 |
 | `/guard log [页码]` | `BOT_ADMIN` | `MBB-AIGuard` | 查看风险事件 |
+| `/guard remind <QQ>` | `BOT_ADMIN` | `MBB-AIGuard` | 设置告警私信推送 QQ |
 | `/guard whitelist list/add/remove` | `BOT_ADMIN` | `MBB-AIGuard` | 管理全局或群级白名单 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
