@@ -169,6 +169,12 @@ reload
 | `/chat whitelist add/remove/list` | `BOT_ADMIN` | `MBB-Chat` | 管理 AI 对话白名单 |
 | `/chatstat group [群号] [天数] [ai]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计群聊内容，末尾加 `ai` 输出 AI 总结图片 |
 | `/chatstat user <QQ> [天数] [ai]` | `BOT_ADMIN` | `MBB-ChatStat` | 图片统计某人在所有可见群的发言，末尾加 `ai` 输出 AI 总结图片 |
+| `/guard status` | `BOT_ADMIN` | `MBB-AIGuard` | 查看当前群风险审查状态 |
+| `/guard enable/disable [群号]` | `BOT_ADMIN` | `MBB-AIGuard` | 开启或关闭指定群审查 |
+| `/guard threshold <分数>` | `BOT_ADMIN` | `MBB-AIGuard` | 设置当前群告警阈值 |
+| `/guard test <文本>` | `BOT_ADMIN` | `MBB-AIGuard` | 测试文本风险判定 |
+| `/guard log [页码]` | `BOT_ADMIN` | `MBB-AIGuard` | 查看风险事件 |
+| `/guard whitelist list/add/remove` | `BOT_ADMIN` | `MBB-AIGuard` | 管理全局或群级白名单 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
 | `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |
