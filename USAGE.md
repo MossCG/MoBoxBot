@@ -176,6 +176,11 @@ reload
 | `/guard log [页码]` | `BOT_ADMIN` | `MBB-AIGuard` | 查看风险事件 |
 | `/guard remind <QQ>` | `BOT_ADMIN` | `MBB-AIGuard` | 设置告警私信推送 QQ |
 | `/guard whitelist list/add/remove` | `BOT_ADMIN` | `MBB-AIGuard` | 管理全局或群级白名单 |
+| `/role status` | `BOT_ADMIN` | `MBB-Roleplay` | 查看当前群角色扮演状态 |
+| `/role enable/disable [群号]` | `BOT_ADMIN` | `MBB-Roleplay` | 开启或关闭群角色扮演 |
+| `/role reload` | `BOT_ADMIN` | `MBB-Roleplay` | 重载角色设定 |
+| `/role memory` | `BOT_ADMIN` | `MBB-Roleplay` | 查看当前群长期与短期记忆 |
+| `/role forget` | `BOT_ADMIN` | `MBB-Roleplay` | 清空当前群角色记忆 |
 | `/plugins` / `/plugins list` | `OWNER` | `MBB-Plugins` | 显示当前插件列表图片 |
 | `/plugins info <插件名>` | `OWNER` | `MBB-Plugins` | 查看插件详情 |
 | `/plugins enable/disable/reload <插件名>` | `OWNER` | `MBB-Plugins` | 管理插件，不能停用或重载自身 |
