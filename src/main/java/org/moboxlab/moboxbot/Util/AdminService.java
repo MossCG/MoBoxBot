@@ -27,6 +27,20 @@ public class AdminService {
         return result;
     }
 
+    public static List<Long> getOwnerList() {
+        List<Long> result = new ArrayList<>();
+        String text = BasicInfo.getConfigString("botOwner","");
+        if (text == null || text.trim().isEmpty()) return result;
+        for (String item : text.split(",")) {
+            try {
+                long id = Long.parseLong(item.trim());
+                if (id > 0 && !result.contains(id)) result.add(id);
+            } catch (Exception ignored) {
+            }
+        }
+        return result;
+    }
+
     public static boolean addAdmin(long userID) {
         if (userID <= 0) return false;
         Set<Long> admins = new LinkedHashSet<>(getAdminList());

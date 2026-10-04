@@ -138,6 +138,7 @@ public class ExamplePlugin extends Plugin {
 | `reloadConfig()` | 重载主程序配置 |
 | `getCommandList()` | 获取已注册命令元数据 |
 | `getAdminList()` | 获取机器人管理员 QQ 列表 |
+| `getOwnerList()` | 获取机器人所有者 QQ 列表 |
 | `addAdmin(long)` | 添加机器人管理员 |
 | `removeAdmin(long)` | 移除机器人管理员 |
 | `getPluginInfoList()` | 获取插件展示信息 |

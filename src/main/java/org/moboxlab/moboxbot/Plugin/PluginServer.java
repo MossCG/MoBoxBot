@@ -70,6 +70,11 @@ public class PluginServer implements Server {
     }
 
     @Override
+    public List<Long> getOwnerList() {
+        return AdminService.getOwnerList();
+    }
+
+    @Override
     public boolean addAdmin(long userID) {
         return AdminService.addAdmin(userID);
     }

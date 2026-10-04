@@ -39,6 +39,8 @@ public interface Server {
 
     List<Long> getAdminList();
 
+    List<Long> getOwnerList();
+
     boolean addAdmin(long userID);
 
     boolean removeAdmin(long userID);

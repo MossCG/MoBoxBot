@@ -14,7 +14,7 @@ import java.util.List;
  * 公共 API 形状一旦变化，本测试必须同步更新版本与文档。
  */
 public class ApiFreezeTest {
-    private static final String EXPECTED_HASH = "5e10009c6a4ad44594cc14318ee4cb07cc247aacaf65da902ddb4f7201b4aa31";
+    private static final String EXPECTED_HASH = "9a7b9da86a53335a54ca8c2493ca5f26767013f0ef0f824625737ae87114c7cb";
     private static final String[] API_CLASS_NAMES = new String[]{
             "org.moboxlab.moboxbot.API.MoBoxBotAPI",
             "org.moboxlab.moboxbot.API.Server",
