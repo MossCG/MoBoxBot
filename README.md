@@ -121,6 +121,7 @@ MoBoxBot/
 ├─ src/main/java/org/moboxlab/moboxbot/
 ├─ src/main/resources/
 ├─ depend/
+├─ docs/
 ├─ build.ps1
 ├─ run.bat
 └─ .github/workflows/
@@ -183,22 +184,22 @@ exit / stop
 ```text
 version.txt
 src/main/java/org/moboxlab/moboxbot/BasicInfo.java
-update.md
+docs/update.md
 ```
 
 推送 `master` 后，GitHub Actions 会自动构建并发布 Release。
 
 ## 文档
 
-- [USAGE.md](USAGE.md)：使用、配置、命令和常见问题
-- [DEPLOY.md](DEPLOY.md)：Windows、Linux 和 NapCat 部署
-- [PLUGIN.md](PLUGIN.md)：插件开发规范
-- [API.md](API.md)：插件 API 0.3 冻结文档
-- [ONEBOT.md](ONEBOT.md)：OneBot 11 覆盖清单
-- [STYLE.md](STYLE.md)：代码风格
-- [CONTRIBUTING.md](CONTRIBUTING.md)：参与开发
-- [SECURITY.md](SECURITY.md)：安全与凭据策略
-- [update.md](update.md)：版本更新日志
+- [USAGE.md](docs/USAGE.md)：使用、配置、命令和常见问题
+- [DEPLOY.md](docs/DEPLOY.md)：Windows、Linux 和 NapCat 部署
+- [PLUGIN.md](docs/PLUGIN.md)：插件开发规范
+- [API.md](docs/API.md)：插件 API 0.3 冻结文档
+- [ONEBOT.md](docs/ONEBOT.md)：OneBot 11 覆盖清单
+- [STYLE.md](docs/STYLE.md)：代码风格
+- [CONTRIBUTING.md](docs/CONTRIBUTING.md)：参与开发
+- [SECURITY.md](docs/SECURITY.md)：安全与凭据策略
+- [update.md](docs/update.md)：版本更新日志
 
 ## 开发协作
 
@@ -206,6 +207,7 @@ update.md
 |---|---|
 | [MBB-ExamplePlugin](https://github.com/MossCG/MBB-ExamplePlugin) | 官方插件开发示例，覆盖 API 0.1 的主要调用方式 |
 | [MBB-Plugins](https://github.com/MossCG/MBB-Plugins) | MoBoxBot 常用插件集合 |
+| [MBB-Knowledge](https://github.com/MossCG/MBB-Knowledge) | Roleplay 可选知识库与编写文档 |
 | [MoBoxLib](https://github.com/MossCG/MoBoxLib) | MoBoxBot 与 MBB-* 插件共用的 Java 8 基础库 |
 
 开发新插件时，优先从 `MBB-ExamplePlugin` 复制结构。

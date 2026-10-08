@@ -321,3 +321,17 @@ chcp 65001
 - 不要把 OneBot WS 端口直接暴露到公网。
 - 插件是可执行代码，只加载可信插件。
 - 生产环境更新插件建议重启进程。
+
+## 13. Roleplay 知识库
+
+`MBB-Roleplay` 的可选知识库单独维护在：
+
+[MossCG/MBB-Knowledge](https://github.com/MossCG/MBB-Knowledge)
+
+把仓库里的 `knowledge/` 目录复制到：
+
+```text
+./MoBoxBot/plugins/MBB-Roleplay/knowledge/
+```
+
+然后在群里执行 `/role kb reload` 和 `/role kb list`。

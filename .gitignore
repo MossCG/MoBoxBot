@@ -8,6 +8,17 @@ build/
 # 本地参考资料（NapCat、Java-WebSocket 等，不进仓库）
 _ref/
 
+# 本地开发过程资料（计划、Agent 约束、抓取脚本和临时文件）
+/AGENTS.md
+/PLAN.md
+/_tmp/
+/.tmp-*/
+/.codex-tmp/
+/tools/
+/.codex-temp-*.json
+/*.tmp.json
+/*__*.json
+
 # 运行目录（只忽略仓库根目录下的那个，别误伤 Java 包目录）
 /MoBoxBot/
 logs/
